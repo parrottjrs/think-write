@@ -1,5 +1,16 @@
 import React from "react";
+import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import SaveButton from "../buttons/SaveButton";
 
 export default function Editor() {
-  return <p className="text-3xl text-center font-bold underline red">Edit</p>;
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="flex flex-col">
+      <ReactQuill theme="snow" value={value} onChange={setValue} />
+      <SaveButton />
+    </div>
+  );
 }
