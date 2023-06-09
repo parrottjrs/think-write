@@ -1,27 +1,33 @@
 import React from "react";
+import DeleteButton from "./DeleteButton";
+import image from "../assets/edit.png";
 
 export default function NotesList() {
   return (
-    <div className="mt-15">
-      <div className="px-4 sm:px-8 max-w-3xl m-auto">
-        <h2 className="text-center font-semibold text-3xl mb-10">Notes</h2>
-        <ul className="border border-gray-200 rounded overflow-hidden shadow-md">
-          <li className="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
-            First Item
-          </li>
-          <li className="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
-            Second Item
-          </li>
-          <li className="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
-            Third Item
-          </li>
-          <li className="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
-            Another Item
-          </li>
-          <li className="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
-            Item for the Nth time
-          </li>
-        </ul>
+    <div className="sm-w-1/2 self-center bg-white">
+      <div className="overflow-x-auto border-x border-t">
+        <table className="table-auto w-full">
+          <thead className="border-b">
+            <tr className="bg-gray-100">
+              <th className="text-left p-4 font-medium">Title</th>
+              <th className="text-left p-4 font-medium">Created on</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b hover:bg-gray-50">
+              <td className="p-4">Note 1</td>
+              <td className="p-4">Oct. 23, 2022</td>
+              <td>
+                <DeleteButton />
+              </td>
+              <td>
+                <img className="m-5" src={image} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
