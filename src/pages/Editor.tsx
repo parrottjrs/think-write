@@ -8,7 +8,7 @@ export default function Editor() {
   const [value, setValue] = useState("");
 
   return (
-    <div className="flex flex-col">
+    <div className="w-100 flex flex-col">
       <ReactQuill theme="snow" value={value} onChange={setValue} />
       <SaveButton text={value} />
     </div>
