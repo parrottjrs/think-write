@@ -1,5 +1,6 @@
 import React from "react";
 import NotesList from "../components/NotesList";
+import CreateButton from "../components/CreateButton";
 
 export default function Homepage() {
   return (
@@ -8,6 +9,7 @@ export default function Homepage() {
       <div className="flex flex-row justify-center">
         <NotesList />
       </div>
+      <CreateButton />
     </div>
   );
 }

@@ -1,16 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function SaveButton(text) {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    localStorage.setItem("notes", JSON.stringify(text));
-  };
-
+export default function SaveButton() {
   return (
-    <button
+    <a
+      href="/think-write/save"
+      onClick={() => {
+        console.log("save");
+      }}
       className="self-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-10"
-      onClick={handleClick}
     >
       Save
-    </button>
+    </a>
   );
 }
