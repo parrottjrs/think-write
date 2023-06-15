@@ -10,7 +10,7 @@ export default function Editor() {
     const maybeText = localStorage.getItem("text");
 
     if (maybeText === null) {
-      return;
+      return [];
     } else {
       return JSON.parse(maybeText);
     }
