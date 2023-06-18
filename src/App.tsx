@@ -8,7 +8,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="think-write/" element={<Homepage />} />
-      <Route path="think-write/edit" element={<Editor />} />
+      <Route path="think-write/edit/:id" element={<Editor />} />
       <Route path="think-write/save" element={<Save />} />
     </Routes>
   );

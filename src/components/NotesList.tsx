@@ -1,6 +1,5 @@
 import React from "react";
-import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
+import NoteElement from "./NoteElement";
 
 export default function NotesList() {
   return (
@@ -9,12 +8,7 @@ export default function NotesList() {
         <div className="p-4 bg-gray-100">Title</div>
         <div className="p-4 bg-gray-100">Last Edit</div>
         <div className="p-4 bg-gray-100"></div>
-        <div className="p-4 border-b hover:bg-gray-50">note 1</div>
-        <div className="p-4 border-b hover:bg-gray-50">june 12, 2023</div>
-        <div className="p-4 border-b hover:bg-gray-50">
-          <EditButton />
-          <DeleteButton />
-        </div>
+        <NoteElement />
       </div>
     </div>
   );

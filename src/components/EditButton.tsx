@@ -1,10 +1,12 @@
 import React from "react";
 import image from "../assets/edit.png";
 
-export default function EditButton() {
+export default function EditButton(id) {
   return (
     <button>
-      <img className="mx-5" src={image} />
+      <a href={`/think-write/edit/${id}`}>
+        <img className="mx-5" src={image} />
+      </a>
     </button>
   );
 }

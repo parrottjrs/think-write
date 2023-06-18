@@ -4,31 +4,32 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { v4 as uuid } from "uuid";
+import { NOTES } from "../utilities/utilities";
 
 export default function Editor() {
-  const getNotes = () => {
-    const maybeNotes = localStorage.getItem("notes");
-    return maybeNotes ? JSON.parse(maybeNotes) : [];
-  };
+  const date = new Date();
 
-  let notes = getNotes();
+  const formattedDate = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
 
   const [note, setNote] = useState({
     id: uuid(),
     text: JSON.parse(localStorage.getItem("text")),
+    modified: formattedDate,
   });
 
   const [text, setText] = useState(note.text);
 
   const saveNote = (updated) => {
-    const existing = notes.find((note) => note.id == updated.id);
+    const existing = NOTES.find((note) => note.id == updated.id);
 
     if (existing) {
       existing.text = updated.text;
     } else {
-      notes.push(updated);
+      NOTES.push(updated);
     }
-    localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem("notes", JSON.stringify(NOTES));
   };
 
   useEffect(() => {
