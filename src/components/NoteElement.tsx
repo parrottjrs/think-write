@@ -1,19 +1,19 @@
 import React from "react";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
-import { NOTES } from "../utilities/utilities";
+import { getNotes } from "../utilities/utilities";
 
 export default function NoteElement() {
-  return NOTES.map((note) => {
+  return getNotes().map((note) => {
     return (
-      <>
+      <React.Fragment key={note.id}>
         <div className="p-4 border-b hover:bg-gray-50">note</div>
         <div className="p-4 border-b hover:bg-gray-50">{note.modified}</div>
         <div className="p-4 border-b hover:bg-gray-50">
           <EditButton id={note.id} />
           <DeleteButton />
         </div>
-      </>
+      </React.Fragment>
     );
   });
 }

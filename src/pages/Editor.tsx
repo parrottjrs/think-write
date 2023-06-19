@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
-import { v4 as uuid } from "uuid";
-import { NOTES } from "../utilities/utilities";
+import { getNotes } from "../utilities/utilities";
+import { useParams } from "react-router-dom";
 
 export default function Editor() {
   const date = new Date();
@@ -13,37 +13,40 @@ export default function Editor() {
     date.getMonth() + 1
   }/${date.getFullYear()}`;
 
-  const [note, setNote] = useState({
-    id: uuid(),
-    text: JSON.parse(localStorage.getItem("text")),
-    modified: formattedDate,
-  });
+  const params = useParams();
 
-  const [text, setText] = useState(note.text);
+  const notes = getNotes();
+  const existing = notes.find((n) => n.id == params.id);
 
-  const saveNote = (updated) => {
-    const existing = NOTES.find((note) => note.id == updated.id);
-
-    if (existing) {
-      existing.text = updated.text;
-    } else {
-      NOTES.push(updated);
+  const [note, setNote] = useState(
+    existing ?? {
+      id: params.id,
+      text: "",
+      modified: formattedDate,
     }
-    localStorage.setItem("notes", JSON.stringify(NOTES));
-  };
+  );
 
   useEffect(() => {
-    localStorage.setItem("text", JSON.stringify(text));
+    const notes = getNotes();
+    const existing = notes.find((n) => n.id == params.id);
+    if (existing) {
+      existing.text = note.text;
+    } else {
+      notes.push(note);
+    }
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [note]);
+
+  const handleChange = (text) => {
     setNote({
       ...note,
-      text: text,
+      text,
     });
-    saveNote(note);
-  }, [text]);
+  };
 
   return (
     <div className="w-100 flex flex-col">
-      <ReactQuill theme="snow" value={text} onChange={setText} />
+      <ReactQuill theme="snow" value={note.text} onChange={handleChange} />
       <SaveButton />
     </div>
   );
