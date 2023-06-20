@@ -1,12 +1,13 @@
 import React from "react";
+import { getNotes } from "../utilities/utilities";
 
-export default function LockButton() {
+export default function LockButton({ onClick }) {
   return (
-    <a
-      href="/think-write/"
-      className="self-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-10"
+    <button
+      className="self-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded"
+      onClick={onClick}
     >
-      Lock
-    </a>
+      Lock Note
+    </button>
   );
 }

@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { getNotes } from "../utilities/utilities";
 import { useParams } from "react-router-dom";
+import HomeButton from "../components/HomeButton";
 
 export default function Editor() {
   const date = new Date();
@@ -47,6 +48,7 @@ export default function Editor() {
   return (
     <div className="w-100 flex flex-col">
       <ReactQuill theme="snow" value={note.text} onChange={handleChange} />
+      <HomeButton />
       <SaveButton id={note.id} />
     </div>
   );
