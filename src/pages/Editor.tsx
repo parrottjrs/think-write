@@ -47,7 +47,7 @@ export default function Editor() {
   return (
     <div className="w-100 flex flex-col">
       <ReactQuill theme="snow" value={note.text} onChange={handleChange} />
-      <SaveButton />
+      <SaveButton id={note.id} />
     </div>
   );
 }
