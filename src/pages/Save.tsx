@@ -7,22 +7,30 @@ import HomeButton from "../components/HomeButton";
 
 export default function Save() {
   const params = useParams();
-  const notes = getNotes();
-  const existing = notes.find((n) => n.id == params.id);
+
+  const lockable = JSON.parse(localStorage.getItem(params.id ?? "") ?? "{}");
+
   const [date, setDate] = useState(new Date());
+
+  const formattedDate = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
 
   const handleChange = (date) => {
     setDate(date);
   };
 
   const handleClick = () => {
-    const formattedDate = `${date.getDate()}/${
-      date.getMonth() + 1
-    }/${date.getFullYear()}`;
-    const notes = getNotes();
-    const existing = notes.find((n) => n.id == params.id);
-    existing.locked = formattedDate;
-    localStorage.setItem("notes", JSON.stringify(notes));
+    if (lockable.hot === "") return;
+
+    localStorage.setItem(
+      `${params.id}`,
+      JSON.stringify({
+        cold: [lockable.hot],
+        hot: "",
+        modified: lockable.modified,
+      })
+    );
   };
 
   return (
