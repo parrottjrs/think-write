@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
-import { getNotes } from "../utilities/utilities";
 import LockButton from "../components/LockButton";
 import HomeButton from "../components/HomeButton";
 
 export default function Save() {
   const params = useParams();
-
   const lockable = JSON.parse(localStorage.getItem(params.id ?? "") ?? "{}");
+  const sessions = lockable.sessions;
+  const sessionNumber = sessions.length + 1;
 
   const [date, setDate] = useState(new Date());
 
@@ -23,14 +23,21 @@ export default function Save() {
   const handleClick = () => {
     if (lockable.hot === "") return;
 
+    sessions.push({
+      session: sessionNumber,
+      text: lockable.hot,
+      lockedUntil: formattedDate,
+    });
+
     localStorage.setItem(
       `${params.id}`,
       JSON.stringify({
-        cold: [lockable.hot],
+        sessions: sessions,
         hot: "",
         modified: lockable.modified,
       })
     );
+    lockable.hot = "";
   };
 
   return (

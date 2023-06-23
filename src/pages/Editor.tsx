@@ -14,19 +14,22 @@ export default function Editor() {
   }/${date.getFullYear()}`;
 
   const params = useParams();
-  const stillHot = JSON.parse(
-    localStorage.getItem(params.id ?? "") ?? "{}"
-  ).hot;
+  const project = JSON.parse(localStorage.getItem(params.id ?? "") ?? "{}");
+  const lockedSessions = project.sessions ? project.sessions : [];
 
   const [note, setNote] = useState({
-    text: stillHot ?? "",
+    text: project.hot ?? "",
     date: formattedDate,
   });
 
   useEffect(() => {
     localStorage.setItem(
       `${params.id}`,
-      JSON.stringify({ cold: [], hot: note.text, modified: note.date })
+      JSON.stringify({
+        hot: note.text,
+        modified: note.date,
+        sessions: lockedSessions,
+      })
     );
   }, [note]);
 
