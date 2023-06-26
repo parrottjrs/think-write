@@ -6,6 +6,7 @@ import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
 import { formatDate } from "../utils/utils";
+import LockedSessions from "../components/LockedSessions";
 
 export default function Editor() {
   const date = new Date();
@@ -35,6 +36,7 @@ export default function Editor() {
   return (
     <div>
       <div className="w-100 flex flex-col">
+        <LockedSessions sessions={sessions} />
         <div className="w-full lg:w-3/4 self-end">
           <ReactQuill theme="snow" value={text} onChange={handleChange} />
         </div>

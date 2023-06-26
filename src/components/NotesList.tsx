@@ -14,7 +14,7 @@ export default function NotesList() {
           {title ? title : ""}
         </div>
         <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
-        <div className="inline p-4 border-b hover:bg-gray-50">
+        <div className="p-4 border-b hover:bg-gray-50">
           <EditButton id={id} />
           <DeleteButton />
         </div>

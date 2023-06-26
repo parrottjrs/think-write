@@ -21,7 +21,7 @@ export default function Save() {
     if (lockable.hot === "") return;
 
     sessions.push({
-      session: sessionNumber,
+      sessionId: sessionNumber,
       text: lockable.hot,
       lockedUntil: formatDate(date),
     });
