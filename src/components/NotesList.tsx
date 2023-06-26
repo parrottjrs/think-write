@@ -1,15 +1,24 @@
 import React from "react";
-import NoteElement from "./NoteElement";
+import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 
 export default function NotesList() {
-  return (
-    <div className="sm-w-1/2 self-center bg-white">
-      <div className="border-x border-t grid grid-cols-3  place-content-evenly">
-        <div className="p-4 bg-gray-100">Title</div>
-        <div className="p-4 bg-gray-100">Last Edit</div>
-        <div className="p-4 bg-gray-100"></div>
-        <NoteElement />
-      </div>
-    </div>
-  );
+  const keys = Object.keys(localStorage);
+
+  return keys.map((key) => {
+    const id = key;
+    const { title, modified } = JSON.parse(localStorage.getItem(key) ?? "{}");
+    return (
+      <React.Fragment key={id}>
+        <div className="p-4 border-b hover:bg-gray-50">
+          {title ? title : ""}
+        </div>
+        <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
+        <div className="inline p-4 border-b hover:bg-gray-50">
+          <EditButton id={id} />
+          <DeleteButton />
+        </div>
+      </React.Fragment>
+    );
+  });
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import { getNotes } from "../utilities/utilities";
 
 export default function LockButton({ onClick }) {
   return (

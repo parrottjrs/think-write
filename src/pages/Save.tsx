@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
 import LockButton from "../components/LockButton";
 import HomeButton from "../components/HomeButton";
+import { formatDate } from "../utils/utils";
 
 export default function Save() {
   const params = useParams();
@@ -11,10 +12,6 @@ export default function Save() {
   const sessionNumber = sessions.length + 1;
 
   const [date, setDate] = useState(new Date());
-
-  const formattedDate = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
 
   const handleChange = (date) => {
     setDate(date);
@@ -26,7 +23,7 @@ export default function Save() {
     sessions.push({
       session: sessionNumber,
       text: lockable.hot,
-      lockedUntil: formattedDate,
+      lockedUntil: formatDate(date),
     });
 
     localStorage.setItem(

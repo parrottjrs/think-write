@@ -5,46 +5,42 @@ import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
+import { formatDate } from "../utils/utils";
 
 export default function Editor() {
   const date = new Date();
 
-  const formattedDate = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
-
   const params = useParams();
-  const project = JSON.parse(localStorage.getItem(params.id ?? "") ?? "{}");
-  const lockedSessions = project.sessions ? project.sessions : [];
+  const { sessions = [], hot = "" } = JSON.parse(
+    localStorage.getItem(params.id ?? "") ?? "{}"
+  );
 
-  const [note, setNote] = useState({
-    text: project.hot ?? "",
-    date: formattedDate,
-  });
+  const [text, setText] = useState(hot);
 
   useEffect(() => {
     localStorage.setItem(
       `${params.id}`,
       JSON.stringify({
-        hot: note.text,
-        modified: note.date,
-        sessions: lockedSessions,
+        hot: text,
+        modified: formatDate(date),
+        sessions: sessions,
       })
     );
-  }, [note]);
+  }, [text]);
 
   const handleChange = (text) => {
-    setNote({
-      ...note,
-      text,
-    });
+    setText(text);
   };
 
   return (
-    <div className="w-100 flex flex-col">
-      <ReactQuill theme="snow" value={note.text} onChange={handleChange} />
-      <HomeButton />
-      <SaveButton id={params.id} />
+    <div>
+      <div className="w-100 flex flex-col">
+        <div className="w-full lg:w-3/4 self-end">
+          <ReactQuill theme="snow" value={text} onChange={handleChange} />
+        </div>
+        <HomeButton />
+        <SaveButton id={params.id} />
+      </div>
     </div>
   );
 }
