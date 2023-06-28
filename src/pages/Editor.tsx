@@ -35,11 +35,9 @@ export default function Editor() {
 
   return (
     <div>
-      <div className="w-100 flex flex-col">
+      <div className="w-75% flex flex-col">
         <LockedSessions sessions={sessions} />
-        <div className="w-full lg:w-3/4 self-end">
-          <ReactQuill theme="snow" value={text} onChange={handleChange} />
-        </div>
+        <ReactQuill theme="snow" value={text} onChange={handleChange} />
         <HomeButton />
         <SaveButton id={params.id} />
       </div>
