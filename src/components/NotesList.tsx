@@ -16,7 +16,7 @@ export default function NotesList() {
         <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
         <div className="p-4 border-b hover:bg-gray-50">
           <EditButton id={id} />
-          <DeleteButton />
+          <DeleteButton id={id} />
         </div>
       </React.Fragment>
     );

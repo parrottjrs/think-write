@@ -1,16 +1,17 @@
 import React from "react";
-import parse from "html-react-parser";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
+import * as DOMPurify from "dompurify";
 
 export default function LockedSessions({ sessions }) {
   const lockedSessions = sessions.map((session) => {
     const { sessionId, text, lockedUntil } = session;
+    const sanitized = DOMPurify.sanitize(text);
     return (
       <div className="break-words p-2" key={sessionId}>
         <p>Session number: {sessionId}</p>
         <p>Locked until: {lockedUntil}</p>
-        {parse(text)}
+        <div dangerouslySetInnerHTML={{ __html: sanitized }} />
       </div>
     );
   });
