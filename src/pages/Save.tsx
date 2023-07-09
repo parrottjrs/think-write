@@ -23,8 +23,7 @@ export default function Save() {
     sessions.push({
       sessionId: sessionNumber,
       text: lockable.hot,
-      isLocked: true,
-      lockedUntil: formatDate(date),
+      lockDate: formatDate(date),
     });
 
     localStorage.setItem(

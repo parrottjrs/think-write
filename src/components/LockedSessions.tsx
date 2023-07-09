@@ -1,17 +1,16 @@
 import React from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { lockCheck } from "../utils/utils";
 
 export default function LockedSessions({ sessions }) {
   const lockedSessions = sessions.map((session) => {
-    const { sessionId, text, lockedUntil, isLocked } = session;
-    if (isLocked === false) {
-      // do nothing
-    } else {
+    const { sessionId, text, lockDate } = session;
+    if (lockCheck(session)) {
       return (
         <div className="break-words p-2" key={sessionId}>
           <p>Session number: {sessionId}</p>
-          <p>Locked until: {lockedUntil}</p>
+          <p>Locked until: {lockDate}</p>
           <div dangerouslySetInnerHTML={{ __html: text }} />
         </div>
       );
