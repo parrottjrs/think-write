@@ -7,10 +7,10 @@ import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
 import { formatDate } from "../utils/utils";
 import LockedSessions from "../components/LockedSessions";
+import SessionEditor from "../components/SessionEditor";
 
 export default function Editor() {
   const date = new Date();
-
   const params = useParams();
   const { sessions = [], hot = "" } = JSON.parse(
     localStorage.getItem(params.id ?? "") ?? "{}"
@@ -37,6 +37,11 @@ export default function Editor() {
     <div>
       <div className="w-75% flex flex-col">
         <LockedSessions sessions={sessions} />
+        <SessionEditor
+          projectId={params.id}
+          sessions={sessions}
+          todaysDate={formatDate(date)}
+        />
         <ReactQuill theme="snow" value={text} onChange={handleChange} />
         <HomeButton />
         <SaveButton id={params.id} />

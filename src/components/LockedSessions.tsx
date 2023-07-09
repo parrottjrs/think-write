@@ -1,19 +1,30 @@
 import React from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
-import * as DOMPurify from "dompurify";
 
 export default function LockedSessions({ sessions }) {
   const lockedSessions = sessions.map((session) => {
-    const { sessionId, text, lockedUntil } = session;
-    const sanitized = DOMPurify.sanitize(text);
-    return (
-      <div className="break-words p-2" key={sessionId}>
-        <p>Session number: {sessionId}</p>
-        <p>Locked until: {lockedUntil}</p>
-        <div dangerouslySetInnerHTML={{ __html: sanitized }} />
-      </div>
-    );
+    const { sessionId, text, lockedUntil, isLocked } = session;
+    if (isLocked === false) {
+      return (
+        <div className="break-words p-2" key={sessionId}>
+          <p>Session number: {sessionId}</p>
+          <div dangerouslySetInnerHTML={{ __html: text }} />
+          <div></div>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Edit
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="break-words p-2" key={sessionId}>
+          <p>Session number: {sessionId}</p>
+          <p>Locked until: {lockedUntil}</p>
+          <div dangerouslySetInnerHTML={{ __html: text }} />
+        </div>
+      );
+    }
   });
 
   const [open, setOpen] = React.useState(false);
@@ -40,7 +51,7 @@ export default function LockedSessions({ sessions }) {
 
         <div className="bg-white rounded my-[10px] p-[10px] shadow-[0_2px_10px] shadow-blackA7">
           <span className="text-violet11 text-[15px] leading-[25px]">
-            Locked Sessions: {sessions.length}
+            Sessions: {sessions.length}
           </span>
         </div>
 
