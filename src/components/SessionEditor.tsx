@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 
 export default function SessionEditor({ projectId, sessions, todaysDate }) {
   const project = JSON.parse(localStorage.getItem(projectId) ?? "{}");
-
+  console.log(project.sessions);
   const parseDate = (date) => {
     // takes dd/mm/yyyy and turns it into an integer so it may be compared to another date
     const parsedDate = {
@@ -29,6 +29,7 @@ export default function SessionEditor({ projectId, sessions, todaysDate }) {
       return false;
     }
   };
+
   const unlockSessions = () => {
     const openSessions = sessions.map((session) => {
       const action = lockCheck(todaysDate, session.lockedUntil);
@@ -44,7 +45,10 @@ export default function SessionEditor({ projectId, sessions, todaysDate }) {
         return (session = session);
       }
     });
+
     project.sessions = openSessions;
+    console.log(openSessions);
+    console.log(project.sessions);
     localStorage.setItem(projectId, JSON.stringify(project));
   };
 
@@ -57,6 +61,7 @@ export default function SessionEditor({ projectId, sessions, todaysDate }) {
       }
     });
     const [text, setText] = useState(textToRender);
-    return <ReactQuill value={text} onChange={setText} />;
+    if (textToRender != "")
+      return <ReactQuill value={text} onChange={setText} />;
   }
 }
