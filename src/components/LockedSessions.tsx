@@ -4,18 +4,7 @@ import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { lockCheck } from "../utils/utils";
 
 export default function LockedSessions({ sessions }) {
-  const lockedSessions = sessions.map((session) => {
-    const { sessionId, text, lockDate } = session;
-    if (lockCheck(session)) {
-      return (
-        <div className="break-words p-2" key={sessionId}>
-          <p>Session number: {sessionId}</p>
-          <p>Locked until: {lockDate}</p>
-          <div dangerouslySetInnerHTML={{ __html: text }} />
-        </div>
-      );
-    }
-  });
+  const lockedSessions = sessions.filter((session) => !lockCheck(session));
 
   const [open, setOpen] = React.useState(false);
   if (sessions.length > 0) {
@@ -44,9 +33,16 @@ export default function LockedSessions({ sessions }) {
             Locked Sessions
           </span>
         </div>
-
         <Collapsible.Content className="select-none">
-          {lockedSessions}
+          {lockedSessions.map(({ sessionId, lockDate, text }) => {
+            return (
+              <div className="break-words p-2" key={sessionId}>
+                <p>Session number: {sessionId}</p>
+                <p>Locked until: {lockDate}</p>
+                <div dangerouslySetInnerHTML={{ __html: text }} />
+              </div>
+            );
+          })}
         </Collapsible.Content>
       </Collapsible.Root>
     );
