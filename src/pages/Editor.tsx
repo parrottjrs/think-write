@@ -5,12 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
-import {
-  LOCAL_PROJECTS,
-  createProject,
-  formatDate,
-  saveProject,
-} from "../utils/utils";
+import { createProject, formatDate, saveProject } from "../utils/utils";
 import LockedSessions from "../components/LockedSessions";
 import SessionEditor from "../components/SessionEditor";
 
