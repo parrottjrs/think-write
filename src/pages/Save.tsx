@@ -3,12 +3,14 @@ import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
 import LockButton from "../components/LockButton";
 import HomeButton from "../components/HomeButton";
-import { formatDate } from "../utils/utils";
+import { LOCAL_PROJECTS, formatDate, saveProject } from "../utils/utils";
 
 export default function Save() {
   const params = useParams();
-  const lockable = JSON.parse(localStorage.getItem(params.id ?? "") ?? "{}");
+  const lockable = LOCAL_PROJECTS.find((project) => project.id === params.id);
+
   const sessions = lockable.sessions;
+
   const sessionNumber = sessions.length + 1;
 
   const [date, setDate] = useState(new Date());
@@ -25,16 +27,8 @@ export default function Save() {
       text: lockable.hot,
       lockDate: formatDate(date),
     });
-
-    localStorage.setItem(
-      `${params.id}`,
-      JSON.stringify({
-        sessions: sessions,
-        hot: "",
-        modified: lockable.modified,
-      })
-    );
     lockable.hot = "";
+    saveProject(lockable);
   };
 
   return (

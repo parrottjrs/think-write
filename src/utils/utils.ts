@@ -27,3 +27,37 @@ export const lockCheck = (session) => {
       date1.year >= date2.year)
   );
 };
+
+const getLocalProjects = () => {
+  const localProjects = localStorage.getItem("projects");
+  if (localProjects === null) {
+    return [];
+  }
+  return JSON.parse(localProjects);
+};
+
+export const LOCAL_PROJECTS = getLocalProjects();
+
+export const createProject = (id) => {
+  const maybeProject = LOCAL_PROJECTS.find((project) => project.id === id);
+  if (maybeProject) {
+    return maybeProject;
+  }
+  return {
+    hot: "",
+    sessions: [],
+  };
+};
+export const saveProject = (currentProject) => {
+  const existing = LOCAL_PROJECTS.find(
+    (project) => project.id === currentProject.id
+  );
+  if (existing) {
+    existing.hot = currentProject.hot;
+    existing.modified = currentProject.modified;
+    existing.sessions = currentProject.sessions;
+  } else {
+    LOCAL_PROJECTS.unshift(currentProject);
+  }
+  localStorage.setItem("projects", JSON.stringify(LOCAL_PROJECTS));
+};

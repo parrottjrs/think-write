@@ -5,29 +5,29 @@ import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
-import { formatDate } from "../utils/utils";
+import {
+  LOCAL_PROJECTS,
+  createProject,
+  formatDate,
+  saveProject,
+} from "../utils/utils";
 import LockedSessions from "../components/LockedSessions";
 import SessionEditor from "../components/SessionEditor";
 
 export default function Editor() {
-  const date = new Date();
   const params = useParams();
 
-  const { sessions = [], hot = "" } = JSON.parse(
-    localStorage.getItem(params.id ?? "") ?? "{}"
-  );
+  let { sessions, hot = "" } = createProject(params.id);
 
   const [text, setText] = useState(hot);
 
   useEffect(() => {
-    localStorage.setItem(
-      `${params.id}`,
-      JSON.stringify({
-        hot: text,
-        modified: formatDate(date),
-        sessions: sessions,
-      })
-    );
+    saveProject({
+      id: params.id,
+      hot: text,
+      modified: formatDate(new Date()),
+      sessions: sessions,
+    });
   }, [text]);
 
   const handleChange = (text) => {

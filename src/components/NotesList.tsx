@@ -1,13 +1,11 @@
 import React from "react";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
+import { LOCAL_PROJECTS } from "../utils/utils";
 
 export default function NotesList() {
-  const keys = Object.keys(localStorage);
-
-  return keys.map((key) => {
-    const id = key;
-    const { title, modified } = JSON.parse(localStorage.getItem(key) ?? "{}");
+  return LOCAL_PROJECTS.map((project) => {
+    const { id, title, modified } = project;
     return (
       <React.Fragment key={id}>
         <div className="p-4 border-b hover:bg-gray-50">
