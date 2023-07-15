@@ -6,8 +6,7 @@ import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import HomeButton from "../components/HomeButton";
 import { createProject, formatDate, saveProject } from "../utils/utils";
-import LockedSessions from "../components/LockedSessions";
-import SessionEditor from "../components/SessionEditor";
+import SessionList from "../components/SessionList";
 
 export default function Editor() {
   const params = useParams();
@@ -32,8 +31,7 @@ export default function Editor() {
   return (
     <div>
       <div className="w-75% flex flex-col">
-        <LockedSessions sessions={sessions} />
-        <SessionEditor projectId={params.id} sessions={sessions} />
+        <SessionList sessions={sessions} />
         <ReactQuill theme="snow" value={text} onChange={handleChange} />
         <HomeButton />
         <SaveButton id={params.id} />

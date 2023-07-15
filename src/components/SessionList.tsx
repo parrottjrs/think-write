@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
-import { lockCheck } from "../utils/utils";
+import EditButton from "./EditButton";
+import ReactQuill from "react-quill";
 
-export default function LockedSessions({ sessions }) {
-  const lockedSessions = sessions.filter((session) => !lockCheck(session));
+export default function SessionList({ sessions }) {
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen] = React.useState(false);
   if (sessions.length > 0) {
     return (
       <Collapsible.Root
@@ -34,12 +34,23 @@ export default function LockedSessions({ sessions }) {
           </span>
         </div>
         <Collapsible.Content className="select-none">
-          {lockedSessions.map(({ sessionId, lockDate, text }) => {
+          {sessions.map(({ sessionId, unlockDate, text }) => {
+            const [change, setChange] = useState(true);
             return (
               <div className="break-words p-2" key={sessionId}>
-                <p>Session number: {sessionId}</p>
-                <p>Locked until: {lockDate}</p>
-                <div dangerouslySetInnerHTML={{ __html: text }} />
+                <p>Session {sessionId}</p>
+                <p>Locked until {unlockDate}</p>
+                {change ? (
+                  <div dangerouslySetInnerHTML={{ __html: text }} />
+                ) : (
+                  <ReactQuill value={text} />
+                )}
+                <EditButton
+                  unlockDate={unlockDate}
+                  onClick={() => {
+                    setChange(!change);
+                  }}
+                />
               </div>
             );
           })}
@@ -47,6 +58,6 @@ export default function LockedSessions({ sessions }) {
       </Collapsible.Root>
     );
   } else {
-    // do nothing
+    return null;
   }
 }

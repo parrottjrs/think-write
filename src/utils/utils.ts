@@ -16,9 +16,12 @@ const parseDate = (date) => {
   return parsedDate;
 };
 
-export const lockCheck = (session) => {
+export const lockCheck = (unlockDate) => {
+  // if date 2 is current date or later, note is "unlocked"
+
   const date1 = parseDate(formatDate(new Date()));
-  const date2 = parseDate(session.lockDate);
+  const date2 = parseDate(unlockDate);
+
   return (
     date1.year > date2.year ||
     (date1.month > date2.month && date1.year === date2.year) ||

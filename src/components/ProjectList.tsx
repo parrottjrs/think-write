@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EditButton from "./EditButton";
+import NavigateToEdit from "./NavigateToEdit";
 import DeleteButton from "./DeleteButton";
 import { LOCAL_PROJECTS } from "../utils/utils";
 
@@ -25,7 +25,7 @@ export default function NotesList() {
         </div>
         <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
         <div className="p-4 border-b hover:bg-gray-50">
-          <EditButton id={id} />
+          <NavigateToEdit id={id} />
           <DeleteButton deleteProject={deleteProject} id={id} />
         </div>
       </React.Fragment>
