@@ -1,5 +1,5 @@
 import React from "react";
-import NotesList from "../components/ProjectList";
+import ProjectList from "../components/ProjectList";
 import CreateButton from "../components/CreateButton";
 
 export default function Homepage() {
@@ -12,7 +12,7 @@ export default function Homepage() {
             <div className="p-4 bg-gray-100">Title</div>
             <div className="p-4 bg-gray-100">Last Edit</div>
             <div className="p-4 bg-gray-100"></div>
-            <NotesList />
+            <ProjectList />
           </div>
         </div>
       </div>

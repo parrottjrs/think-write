@@ -3,7 +3,7 @@ import NavigateToEdit from "./NavigateToEdit";
 import DeleteButton from "./DeleteButton";
 import { LOCAL_PROJECTS } from "../utils/utils";
 
-export default function NotesList() {
+export default function ProjectList() {
   const [projects, setProjects] = useState(LOCAL_PROJECTS);
 
   useEffect(() => {
