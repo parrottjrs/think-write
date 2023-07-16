@@ -24,8 +24,8 @@ export default function Save() {
 
     sessions.push({
       sessionId: sessionNumber,
-      text: lockable.hot,
-      lockDate: formatDate(date),
+      cold: lockable.hot,
+      unlockDate: formatDate(date),
     });
     lockable.hot = "";
     saveProject(lockable);

@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
 import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
+import {
+  LOCAL_PROJECTS,
+  formatDate,
+  saveProject,
+  updateColdText,
+} from "../utils/utils";
 
-export default function SessionList({ sessions }) {
+export default function SessionList({ id, sessions, hot }) {
   const [open, setOpen] = useState(false);
 
   if (sessions.length > 0) {
@@ -34,16 +40,32 @@ export default function SessionList({ sessions }) {
           </span>
         </div>
         <Collapsible.Content className="select-none">
-          {sessions.map(({ sessionId, unlockDate, text }) => {
+          {sessions.map(({ sessionId, unlockDate, cold }) => {
             const [change, setChange] = useState(true);
+
+            const [sessionText, setSessionText] = useState(cold);
+
+            useEffect(() => {
+              saveProject({
+                id: id,
+                hot: hot,
+                modified: formatDate(new Date()),
+                sessions: sessions,
+              });
+            }, [sessionText]);
+
+            const handleChange = (sessionText) => {
+              setSessionText(sessionText);
+            };
+
             return (
               <div className="break-words p-2" key={sessionId}>
                 <p>Session {sessionId}</p>
                 <p>Locked until {unlockDate}</p>
                 {change ? (
-                  <div dangerouslySetInnerHTML={{ __html: text }} />
+                  <div dangerouslySetInnerHTML={{ __html: cold }} />
                 ) : (
-                  <ReactQuill value={text} />
+                  <ReactQuill value={sessionText} onChange={handleChange} />
                 )}
                 <EditButton
                   unlockDate={unlockDate}

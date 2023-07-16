@@ -10,14 +10,15 @@ import SessionList from "../components/SessionList";
 
 export default function Editor() {
   const params = useParams();
+  const id = params.id;
 
-  let { sessions, hot = "" } = createProject(params.id);
+  let { sessions, hot = "" } = createProject(id);
 
   const [text, setText] = useState(hot);
 
   useEffect(() => {
     saveProject({
-      id: params.id,
+      id: id,
       hot: text,
       modified: formatDate(new Date()),
       sessions: sessions,
@@ -31,10 +32,10 @@ export default function Editor() {
   return (
     <div>
       <div className="w-75% flex flex-col">
-        <SessionList sessions={sessions} />
+        <SessionList id={id} sessions={sessions} hot={hot} />
         <ReactQuill theme="snow" value={text} onChange={handleChange} />
         <HomeButton />
-        <SaveButton id={params.id} />
+        <SaveButton id={id} />
       </div>
     </div>
   );
