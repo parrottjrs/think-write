@@ -26,7 +26,7 @@ export default function ProjectList() {
         <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
         <div className="p-4 border-b hover:bg-gray-50">
           <NavigateToEdit id={id} />
-          <DeleteButton deleteProject={deleteProject} id={id} />
+          <DeleteButton onClick={() => deleteProject(id)} />
         </div>
       </React.Fragment>
     );
