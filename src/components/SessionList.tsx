@@ -5,6 +5,53 @@ import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 
+function SessionListItem({ session, id, hot, sessions }) {
+  const { cold, sessionId, unlockDate } = session;
+
+  const [change, setChange] = useState(true);
+  const [sessionText, setSessionText] = useState(cold);
+
+  const newSessions = [...sessions];
+  const currentSession = newSessions.find(
+    (session) => session.sessionId === sessionId
+  );
+  currentSession.cold = sessionText;
+
+  useEffect(() => {
+    saveProject({
+      id: id,
+      hot: hot,
+      modified: formatDate(new Date()),
+      sessions: newSessions,
+    });
+  }, [sessionText]);
+
+  const handleChange = (sessionText) => {
+    setSessionText(sessionText);
+  };
+
+  return (
+    <div className="break-words p-2">
+      <p>Session {sessionId}</p>
+      <div>{!lockCheck(unlockDate) && <p>Locked until {unlockDate}</p>}</div>
+      {change ? (
+        <div dangerouslySetInnerHTML={{ __html: cold }} />
+      ) : (
+        <ReactQuill value={sessionText} onChange={handleChange} />
+      )}
+      <div>
+        {lockCheck(unlockDate) && (
+          <EditButton
+            onClick={() => {
+              setChange(!change);
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function SessionList({ id, sessions, hot }) {
   const [open, setOpen] = useState(false);
 
@@ -37,45 +84,15 @@ export default function SessionList({ id, sessions, hot }) {
         </span>
       </div>
       <Collapsible.Content className="select-none">
-        {sessions.map(({ sessionId, unlockDate, cold }) => {
-          const [change, setChange] = useState(true);
-
-          const [sessionText, setSessionText] = useState(cold);
-
-          useEffect(() => {
-            saveProject({
-              id: id,
-              hot: hot,
-              modified: formatDate(new Date()),
-              sessions: sessions,
-            });
-          }, [sessionText]);
-
-          const handleChange = (sessionText) => {
-            setSessionText(sessionText);
-          };
-
+        {sessions.map((session) => {
           return (
-            <div className="break-words p-2" key={sessionId}>
-              <p>Session {sessionId}</p>
-              <div>
-                {!lockCheck(unlockDate) && <p>Locked until {unlockDate}</p>}
-              </div>
-              {change ? (
-                <div dangerouslySetInnerHTML={{ __html: cold }} />
-              ) : (
-                <ReactQuill value={sessionText} onChange={handleChange} />
-              )}
-              <div>
-                {lockCheck(unlockDate) && (
-                  <EditButton
-                    onClick={() => {
-                      setChange(!change);
-                    }}
-                  />
-                )}
-              </div>
-            </div>
+            <SessionListItem
+              key={session.sessionId}
+              session={session}
+              id={id}
+              hot={hot}
+              sessions={sessions}
+            />
           );
         })}
       </Collapsible.Content>
