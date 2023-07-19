@@ -1,10 +1,10 @@
 import React from "react";
-import image from "../assets/delete.png";
+import { Trash2 } from "lucide-react";
 
 export default function DeleteButton({ onClick }) {
   return (
     <button onClick={onClick}>
-      <img src={image} />
+      <Trash2 />
     </button>
   );
 }

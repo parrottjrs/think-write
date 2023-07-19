@@ -1,10 +1,11 @@
 import React from "react";
-import image from "../assets/edit.png";
+
+import { Pencil } from "lucide-react";
 
 export default function NavigateToEdit({ id }) {
   return (
     <a href={`/think-write/edit/${id}`} className="inline-block">
-      <img className="mx-5" src={image} />
+      <Pencil className="mx-5" />
     </a>
   );
 }
