@@ -5,6 +5,8 @@ import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 
+
+
 function SessionListItem({ session, id, hot, sessions }) {
   const { cold, sessionId, unlockDate } = session;
 
@@ -60,7 +62,7 @@ export default function SessionList({ id, sessions, hot }) {
   }
   return (
     <Collapsible.Root
-      className="w-[100%] self-center"
+      className="w-[80%] self-center"
       open={open}
       onOpenChange={setOpen}
     >
