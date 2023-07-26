@@ -5,21 +5,18 @@ import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 
-
-
 function SessionListItem({ session, id, hot, sessions }) {
   const { cold, sessionId, unlockDate } = session;
 
   const [change, setChange] = useState(true);
   const [sessionText, setSessionText] = useState(cold);
 
-  const newSessions = [...sessions];
-  const currentSession = newSessions.find(
-    (session) => session.sessionId === sessionId
-  );
-  currentSession.cold = sessionText;
-
   useEffect(() => {
+    const newSessions = [...sessions];
+    const currentSession = newSessions.find(
+      (session) => session.sessionId === sessionId
+    );
+    currentSession.cold = sessionText;
     saveProject({
       id: id,
       hot: hot,
@@ -86,17 +83,15 @@ export default function SessionList({ id, sessions, hot }) {
         </span>
       </div>
       <Collapsible.Content className="select-none">
-        {sessions.map((session) => {
-          return (
-            <SessionListItem
-              key={session.sessionId}
-              session={session}
-              id={id}
-              hot={hot}
-              sessions={sessions}
-            />
-          );
-        })}
+        {sessions.map((session) => (
+          <SessionListItem
+            key={session.sessionId}
+            session={session}
+            id={id}
+            hot={hot}
+            sessions={sessions}
+          />
+        ))}
       </Collapsible.Content>
     </Collapsible.Root>
   );
