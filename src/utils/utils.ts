@@ -56,6 +56,7 @@ export const saveProject = (currentProject) => {
     (project) => project.id === currentProject.id
   );
   if (existing) {
+    existing.title = currentProject.title;
     existing.hot = currentProject.hot;
     existing.modified = currentProject.modified;
     existing.sessions = currentProject.sessions;

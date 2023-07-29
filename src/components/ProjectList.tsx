@@ -21,7 +21,7 @@ export default function ProjectList() {
     return (
       <React.Fragment key={id}>
         <div className="p-4 border-b hover:bg-gray-50">
-          {title ? title : ""}
+          {title ? title : "Untitled Project"}
         </div>
         <div className="p-4 border-b hover:bg-gray-50">{modified}</div>
         <div className="p-4 border-b hover:bg-gray-50">

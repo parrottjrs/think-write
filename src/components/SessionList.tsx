@@ -5,7 +5,7 @@ import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 
-function SessionListItem({ session, id, hot, sessions }) {
+function SessionListItem({ session, id, hot, sessions, title }) {
   const { cold, sessionId, unlockDate } = session;
 
   const [change, setChange] = useState(true);
@@ -18,6 +18,7 @@ function SessionListItem({ session, id, hot, sessions }) {
     );
     currentSession.cold = sessionText;
     saveProject({
+      title: title,
       id: id,
       hot: hot,
       modified: formatDate(new Date()),
@@ -51,7 +52,7 @@ function SessionListItem({ session, id, hot, sessions }) {
   );
 }
 
-export default function SessionList({ id, sessions, hot }) {
+export default function SessionList({ id, sessions, hot, title }) {
   const [open, setOpen] = useState(false);
 
   if (!sessions.length) {
@@ -90,6 +91,7 @@ export default function SessionList({ id, sessions, hot }) {
             id={id}
             hot={hot}
             sessions={sessions}
+            title={title}
           />
         ))}
       </Collapsible.Content>
