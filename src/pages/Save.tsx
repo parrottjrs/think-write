@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
 import LockButton from "../components/LockButton";
-import HomeButton from "../components/HomeButton";
 import { LOCAL_PROJECTS, formatDate, saveProject } from "../utils/utils";
+import ProjectsNavButton from "../components/ProjectsNavButton";
 
 export default function Save() {
   const params = useParams();
@@ -35,7 +35,7 @@ export default function Save() {
     <div className="flex flex-col justify-center">
       <Calendar className="self-center" onChange={handleChange} value={date} />;
       <LockButton onClick={handleClick} />
-      <HomeButton />
+      <ProjectsNavButton />
     </div>
   );
 }

@@ -4,11 +4,12 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
-import HomeButton from "../components/HomeButton";
+
 import { createProject, formatDate, saveProject } from "../utils/utils";
 import SessionList from "../components/SessionList";
 import SessionDialog from "../components/SessionDialog";
 import Navbar from "../components/Navbar";
+import ProjectsNavButton from "../components/ProjectsNavButton";
 
 export default function Editor() {
   const params = useParams();
@@ -37,7 +38,9 @@ export default function Editor() {
     <div>
       <div className="w-75% flex flex-col">
         <Navbar />
-        <h1>{data.currentTitle}</h1>
+        <h1 className="self-center text-3xl py-5 font-semibold whitespace-nowrap">
+          {data.currentTitle}
+        </h1>
         <SessionDialog
           title={title}
           passData={(data) => {
@@ -46,7 +49,7 @@ export default function Editor() {
         />
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
         <ReactQuill theme="snow" value={text} onChange={handleChange} />
-        <HomeButton />
+        <ProjectsNavButton />
         <SaveButton id={id} />
       </div>
     </div>
