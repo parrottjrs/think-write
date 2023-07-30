@@ -34,7 +34,7 @@ export default function SessionDialog({ title, passData }) {
           >
             {!title && (
               <label htmlFor="titleInput">
-                {"Project Title"}
+                {"Project Title:"}
                 <input
                   id="titleInput"
                   type="text"
@@ -46,7 +46,7 @@ export default function SessionDialog({ title, passData }) {
             )}
 
             <label htmlFor="goal">
-              Today's Goal
+              Today's Goal:
               <select id="goal" {...register("goal")} required={true}>
                 <option value="wordCount">Set a word count</option>
                 <option value="timer">Set a timer</option>

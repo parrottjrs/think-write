@@ -60,7 +60,7 @@ export default function SessionList({ id, sessions, hot, title }) {
   }
   return (
     <Collapsible.Root
-      className="w-[80%] self-center"
+      className="w-[80%] self-center mb-5"
       open={open}
       onOpenChange={setOpen}
     >
