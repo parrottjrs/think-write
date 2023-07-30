@@ -8,6 +8,7 @@ import HomeButton from "../components/HomeButton";
 import { createProject, formatDate, saveProject } from "../utils/utils";
 import SessionList from "../components/SessionList";
 import SessionDialog from "../components/SessionDialog";
+import Navbar from "../components/Navbar";
 
 export default function Editor() {
   const params = useParams();
@@ -35,6 +36,7 @@ export default function Editor() {
   return (
     <div>
       <div className="w-75% flex flex-col">
+        <Navbar />
         <h1>{data.currentTitle}</h1>
         <SessionDialog
           title={title}
