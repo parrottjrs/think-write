@@ -66,17 +66,17 @@ export default function Editor() {
         () => setProgress(progress + 1),
         currentGoal * 0.01
       );
+    } else if (data.goalType === "wordCount") {
+      const wordCounter = (dirty) => {
+        const clean = dirty.replace(/<\/?[^>]+(>|$)/g, "");
+        return clean.split(/\S+/).length - 1;
+
+        //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
+      };
+      const percentage = (wordCounter(hot) / data.goalNumber) * 100;
+
+      setProgress(percentage);
     }
-    // else if (data.goalType === "wordCount") {
-    //   const wordCounter = (text) => {
-    //     const clean = text.replace(/<\/?[^>]+(>|$)/g, "");
-    //     return clean.split(/\S+/).length - 1;
-    //     //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
-    //   };
-    //   let remaining = data.goalNumber - wordCounter(hot);
-    //   console.log(remaining);
-    //   // setProgress(progress + wordCounter(hot));
-    // }
     return () => clearInterval(interval);
   }, [text, data, progress]);
 
