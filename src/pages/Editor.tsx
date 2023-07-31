@@ -11,14 +11,7 @@ import Navbar from "../components/Navbar";
 import ProjectsNavButton from "../components/ProjectsNavButton";
 import * as Progress from "@radix-ui/react-progress";
 
-const ProgressDemo = () => {
-  const [progress, setProgress] = React.useState(13);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
+const ProgressBar = ({ progress }) => {
   return (
     <Progress.Root
       className="relative overflow-hidden bg-red-500 mt-5 rounded-full w-[300px] h-[25px] self-center border-2-black"
@@ -44,7 +37,12 @@ export default function Editor() {
   let { sessions, hot = "", title = "" } = createProject(id);
 
   const [text, setText] = useState(hot);
-  const [data, setData] = useState({ currentTitle: title, goal: "" });
+  const [data, setData] = useState({
+    currentTitle: title,
+    goalType: "noGoal",
+    goalNumber: 0,
+  });
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     saveProject({
@@ -54,7 +52,33 @@ export default function Editor() {
       modified: formatDate(new Date()),
       sessions: sessions,
     });
-  }, [text]);
+
+    let interval;
+
+    if (data.goalType === "minutes" || data.goalType === "hours") {
+      let currentGoal = data.goalNumber;
+      if (data.goalType === "minutes") {
+        currentGoal = data.goalNumber * 60000;
+      } else if (data.goalType === "hours") {
+        currentGoal = data.goalNumber * 3600000;
+      }
+      interval = setInterval(
+        () => setProgress(progress + 1),
+        currentGoal * 0.01
+      );
+    }
+    // else if (data.goalType === "wordCount") {
+    //   const wordCounter = (text) => {
+    //     const clean = text.replace(/<\/?[^>]+(>|$)/g, "");
+    //     return clean.split(/\S+/).length - 1;
+    //     //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
+    //   };
+    //   let remaining = data.goalNumber - wordCounter(hot);
+    //   console.log(remaining);
+    //   // setProgress(progress + wordCounter(hot));
+    // }
+    return () => clearInterval(interval);
+  }, [text, data, progress]);
 
   const handleChange = (text) => {
     setText(text);
@@ -75,7 +99,7 @@ export default function Editor() {
         />
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
         <ReactQuill theme="snow" value={text} onChange={handleChange} />
-        <ProgressDemo />
+        {data.goalType !== "noGoal" && <ProgressBar progress={progress} />}
         <ProjectsNavButton />
         <SaveButton id={id} />
       </div>

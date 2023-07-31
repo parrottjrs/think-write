@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 export default function App() {
   return (
     <Routes>
-      <Route path="think-write/" element={<Home />}></Route>
+      <Route path="think-write/" element={<Home />} />
       <Route path="think-write/projects" element={<Projects />} />
       <Route path="think-write/edit/:id" element={<Editor />} />
       <Route path="think-write/edit/:id/save" element={<Save />} />

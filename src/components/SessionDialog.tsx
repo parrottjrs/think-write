@@ -4,7 +4,11 @@ import { useForm } from "react-hook-form";
 
 export default function SessionDialog({ title, passData }) {
   const { register, handleSubmit } = useForm({
-    defaultValues: { currentTitle: title, goal: "wordCount" },
+    defaultValues: {
+      currentTitle: title,
+      goalType: "wordCount",
+      goalNumber: "500",
+    },
   });
 
   const [open, setOpen] = useState(true);
@@ -32,27 +36,34 @@ export default function SessionDialog({ title, passData }) {
               setOpen(false);
             })}
           >
-            {!title && (
-              <label htmlFor="titleInput">
-                {"Project Title:"}
-                <input
-                  id="titleInput"
-                  type="text"
-                  {...register("currentTitle")}
-                  placeholder="Your title goes here"
-                  required={true}
-                />
-              </label>
-            )}
-
-            <label htmlFor="goal">
-              Today's Goal:
-              <select id="goal" {...register("goal")} required={true}>
-                <option value="wordCount">Set a word count</option>
-                <option value="timer">Set a timer</option>
-                <option value="noGoal">No goal</option>
-              </select>
+            <label htmlFor="titleInput">
+              {"Project Title:"}
+              <input
+                className="ml-2 pl-2"
+                id="titleInput"
+                type="text"
+                {...register("currentTitle")}
+                defaultValue={title}
+                required={true}
+              />
             </label>
+            <div>
+              <label htmlFor="goal">
+                Today's Goal:
+                <input
+                  className="w-12 ml-2 pl-1"
+                  id="goal"
+                  type="number"
+                  {...register("goalNumber")}
+                />
+                <select id="goal" {...register("goalType")} required={true}>
+                  <option value="wordCount">words</option>
+                  <option value="minutes">minutes</option>
+                  <option value="hours">hours</option>
+                  <option value="noGoal">No goal</option>
+                </select>
+              </label>
+            </div>
 
             <input type="submit" className="self-right" />
           </form>

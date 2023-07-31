@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import NavigateToEdit from "./NavigateToEdit";
 import DeleteButton from "./DeleteButton";
-import { LOCAL_PROJECTS } from "../utils/utils";
+import { getLocalProjects } from "../utils/utils";
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState(LOCAL_PROJECTS);
+  const localProjects = getLocalProjects();
+  const [projects, setProjects] = useState(localProjects);
 
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));

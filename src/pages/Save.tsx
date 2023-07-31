@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
 import LockButton from "../components/LockButton";
-import { LOCAL_PROJECTS, formatDate, saveProject } from "../utils/utils";
 import ProjectsNavButton from "../components/ProjectsNavButton";
+import { formatDate, getLocalProjects, saveProject } from "../utils/utils";
 
 export default function Save() {
   const params = useParams();
-  const lockable = LOCAL_PROJECTS.find((project) => project.id === params.id);
-
-  const sessions = lockable.sessions;
-
-  const sessionNumber = sessions.length + 1;
 
   const [date, setDate] = useState(new Date());
 
@@ -20,6 +15,12 @@ export default function Save() {
   };
 
   const handleClick = () => {
+    const localProjects = getLocalProjects();
+    const lockable = localProjects.find((project) => project.id === params.id);
+
+    const sessions = lockable.sessions;
+
+    const sessionNumber = sessions.length + 1;
     if (lockable.hot === "") return;
 
     sessions.push({
