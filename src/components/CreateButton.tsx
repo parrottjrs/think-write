@@ -5,7 +5,7 @@ export default function CreateButton() {
   return (
     <a
       href={`/think-write/edit/${uuid()}`}
-      className="self-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded m-10"
+      className="self-center bg-green-700 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded m-5"
     >
       Create
     </a>

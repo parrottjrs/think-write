@@ -87,7 +87,7 @@ export default function Editor() {
   return (
     <div>
       <div className="w-75% flex flex-col">
-        <Navbar />
+        <Navbar writing={true} />
         <h1 className="self-center text-3xl my-5 font-semibold whitespace-nowrap">
           {data.currentTitle}
         </h1>
