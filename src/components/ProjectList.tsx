@@ -21,13 +21,13 @@ export default function ProjectList() {
     const { id, title, modified } = project;
     return (
       <React.Fragment key={id}>
-        <div className="text-sky-600   p-4 bg-slate-700 border-gray-500 border-b">
+        <div className="text-xs md:text-lg text-sky-600   p-4 bg-slate-700 border-gray-500 border-b">
           {title ? title : "Untitled Project"}
         </div>
-        <div className="text-sky-600 p-4 bg-slate-700  border-b border-gray-500 ">
+        <div className="text-xs md:text-lg text-sky-600 p-4 bg-slate-700  border-b border-gray-500 ">
           {modified}
         </div>
-        <div className="p-4 border-b  border-gray-500 bg-slate-700">
+        <div className="flex p-4 border-b  border-gray-500 bg-slate-700">
           <NavigateToEdit id={id} />
           <DeleteButton onClick={() => deleteProject(id)} />
         </div>
