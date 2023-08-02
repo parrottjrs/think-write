@@ -7,7 +7,7 @@ export default function SessionDialog({ title, passData }) {
     defaultValues: {
       currentTitle: title,
       goalType: "wordCount",
-      goalNumber: "500",
+      goalNumber: 0,
     },
   });
 

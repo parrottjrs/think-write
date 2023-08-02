@@ -98,8 +98,12 @@ export default function Editor() {
           }}
         />
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
-        <ReactQuill theme="snow" value={text} onChange={handleChange} />
-        {data.goalType !== "noGoal" && <ProgressBar progress={progress} />}
+        <div className="text-slate-400">
+          <ReactQuill theme="snow" value={text} onChange={handleChange} />
+        </div>
+        {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
+          <ProgressBar progress={progress} />
+        )}
         <ProjectsNavButton />
         <SaveButton id={id} />
       </div>

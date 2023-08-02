@@ -27,7 +27,7 @@ export default function ProjectList() {
         <div className="text-sky-600 p-4 bg-slate-700  border-b border-gray-500 ">
           {modified}
         </div>
-        <div className="p-4 border-b text-slate-400 border-gray-500 bg-slate-700">
+        <div className="p-4 border-b  border-gray-500 bg-slate-700">
           <NavigateToEdit id={id} />
           <DeleteButton onClick={() => deleteProject(id)} />
         </div>
