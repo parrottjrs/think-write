@@ -1,5 +1,4 @@
 import React from "react";
-import { lockCheck } from "../utils/utils";
 
 export default function EditButton({ onClick }) {
   return (

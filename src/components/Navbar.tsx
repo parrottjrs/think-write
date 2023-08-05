@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { v4 as uuid } from "uuid";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Menu } from "lucide-react";
+import words from "../images/logo-just-words.png";
 
 const LinkList = ({ writing }) => {
   return (
@@ -9,8 +10,7 @@ const LinkList = ({ writing }) => {
       <li>
         <a
           href="/think-write/"
-          className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-          aria-current="page"
+          className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
         >
           Home
         </a>
@@ -29,9 +29,17 @@ const LinkList = ({ writing }) => {
             href={`/think-write/edit/${uuid()}`}
             className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
-            Start a Project
+            New Project
           </a>
         )}
+      </li>
+      <li>
+        <a
+          href="/think-write/about"
+          className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+        >
+          About
+        </a>
       </li>
     </ul>
   );
@@ -47,35 +55,45 @@ const Dropdown = ({ writing }) => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
-          <DropdownMenu.Item>
-            <a
-              href="/think-write/"
-              className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-              aria-current="page"
-            >
-              Home
-            </a>
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item>
-            <a
-              href="/think-write/projects"
-              className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >
-              Projects
-            </a>
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item>
-            {!writing && (
+          <div className="rounded bg-sky-700/75">
+            <DropdownMenu.Item>
               <a
-                href={`/think-write/edit/${uuid()}`}
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                href="/think-write/"
+                className="block pt-2 pb-1 pl-3 pr-4 text-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                Start a Project
+                Home
               </a>
-            )}
-          </DropdownMenu.Item>
+            </DropdownMenu.Item>
+            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Item>
+              <a
+                href="/think-write/projects"
+                className="block py-1 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                Projects
+              </a>
+            </DropdownMenu.Item>
+            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Item>
+              {!writing && (
+                <a
+                  href={`/think-write/edit/${uuid()}`}
+                  className="block py-1 pl-3 pr-4 text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  New Project
+                </a>
+              )}
+            </DropdownMenu.Item>
+            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Item>
+              <a
+                href={"/think-write/about"}
+                className="block pt-1 pb-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                About
+              </a>
+            </DropdownMenu.Item>
+          </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
@@ -86,13 +104,15 @@ export default function Navbar({ writing }) {
   const width = useRef(window.innerWidth);
 
   return (
-    <div className="bg-neutral-900 sticky top-0">
+    <div className="bg-neutral-900 sticky top-0 opacity-75">
       <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/think-write/" className="flex items-center">
-            <span className="text-sm md:text-3xl px-3 md:px-7 font-semibold whitespace-nowrap dark:text-white">
-              Think-Write
-            </span>
+            <img
+              src={words}
+              className="h-3
+        "
+            />
           </a>
           <div
             className="w-full contents md:block md:w-auto px-7"
