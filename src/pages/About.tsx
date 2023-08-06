@@ -11,34 +11,29 @@ export default function About() {
         className="w-36 h-36 m-auto my-5 md:h-60 md:w-60 animate-fade rounded-full
         "
       />
-      <div className="p-4 w-2/3 self-center m-auto bg-slate-800/40 rounded-3xl">
+      <div className="p-4 w-4/5 self-center m-auto my-5 bg-slate-800/25 rounded-3xl">
         <p className="text-xs md:text-lg text-slate-300 font-thin">
-          Hi! My name is Jordan Parrot. You might remember me from such apps as{" "}
+          Hi! My name is Jordan Parrott. I'm a student at Get Coding NL, and an
+          avid cat enthusiast. You might remember me from{" "}
           <a
             className="text-cyan-300 hover:text-cyan-600 "
             href="https://github.com/parrottjrs/totes-mcnotes#hi-my-name-is-jordan-and-welcome-to-totes-mcnotes"
           >
-            Totes-McNotes: An Interactive Notes App
+            Totes-McNotes, my interactive notes app.
           </a>{" "}
-          , and Swim Yourself Thin: Your Virtual Aquatic Weight Loss Guide (just
-          kidding, that one's not real. I can't even swim. Although the name is
-          pretty catchy...) Welcome to my laste creation!
+          Today I'd like to personally welcome to my latest creation:
         </p>
-
         <img
           src={words}
           className=" m-auto my-5 
         "
         />
         <p className="text-xs md:text-lg text-slate-300 font-thin">
-          I'm not much for talking about myself, but my betters told me that I
-          should because telling a story is a great to get people involved in my
-          project. And so a story I will tell. A story about fear. A story about
-          triumph. A story about regret.
-        </p>
-        <br />
-        <p className="text-xs md:text-lg text-slate-300 font-thin">
-          A story <span className="italic">about stories.</span>
+          The idea of Think-Write came in to being in early 2023 and is the
+          result of a long-lasting love/hate relationship with writing. I wanted
+          to create a neurodivergent friendly writing app that would allow
+          people like me to write without fear of falling into an endless trap
+          of editing.
         </p>
         <br />
         <p className="text-xs md:text-lg text-slate-300 font-thin">
@@ -61,10 +56,9 @@ export default function About() {
         <br />
         <p className="text-xs md:text-lg text-slate-300 font-thin">
           Here's the thing, though:{" "}
-          <span className="italic">at page 92 I gave up</span> . Was I bored?
-          Hell no! I was genuinely excited to have made it so far. The issue was
-          rooted in my then undiagnosed ADHD. The problem was poor confidence
-          and lack of self-control.
+          <span className="italic">at page 92 I gave up</span>. Was I bored?
+          Hell no! I was genuinely excited to have made it so far. The problem
+          was poor confidence and lack of self-control.
         </p>
         <br />
         <p className="text-xs md:text-lg text-slate-300 font-thin">
@@ -76,6 +70,15 @@ export default function About() {
           fountain of self-doubt. Eventually I got frustrated and I quit. I let
           all the characters die on the page.
         </p>
+        <br />{" "}
+        <p className="text-xs md:text-lg text-slate-300 font-thin">
+          Think-Write is designed to be a self-doubt killer. By locking up
+          writing "sessions", I hope to allow budding writers to be unencumbered
+          and press on despite all odds, so they may truly enjoy the project
+          they're working on, free from self-doubt.
+        </p>
+        <br />
+        <p className="text-xs md:text-lg text-slate-300 font-thin">- Jordan</p>
       </div>
     </div>
   );

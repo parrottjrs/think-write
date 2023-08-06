@@ -55,7 +55,7 @@ const Dropdown = ({ writing }) => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
-          <div className="rounded bg-sky-700/75">
+          <div className="rounded-xl bg-sky-700/75">
             <DropdownMenu.Item>
               <a
                 href="/think-write/"

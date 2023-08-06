@@ -17,11 +17,11 @@ export default function SessionDialog({ title, passData }) {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-          <Dialog.Title className="m-0 text-[17px] font-medium">
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium">
             Project/Session Details
           </Dialog.Title>
-          <Dialog.Description className="mt-[10px] mb-5 text-[15px] leading-normal">
+          <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-slate-300 font-thin leading-normal">
             Name your project and select a goal for your current writing
             session, or select "no goal". Click submit when you're finished.
           </Dialog.Description>
@@ -31,10 +31,10 @@ export default function SessionDialog({ title, passData }) {
               setOpen(false);
             })}
           >
-            <label htmlFor="titleInput">
+            <label htmlFor="titleInput" className="text-slate-300 font-thin">
               {"Project Title:"}
               <input
-                className="ml-2 pl-2"
+                className="ml-2 my-1 p-1 bg-slate-600 rounded-md"
                 id="titleInput"
                 type="text"
                 {...register("currentTitle")}
@@ -43,15 +43,20 @@ export default function SessionDialog({ title, passData }) {
               />
             </label>
             <div>
-              <label htmlFor="goal">
+              <label htmlFor="goal" className="text-slate-300 font-thin">
                 Today's Goal:
                 <input
-                  className="w-12 ml-2 pl-1"
+                  className="w-12 m-2 p-1 bg-slate-600 rounded-md"
                   id="goal"
                   type="number"
                   {...register("goalNumber")}
                 />
-                <select id="goal" {...register("goalType")} required={true}>
+                <select
+                  id="goal"
+                  {...register("goalType")}
+                  required={true}
+                  className="m-1 px-1 py-1.5 bg-slate-600 rounded-md"
+                >
                   <option value="wordCount">words</option>
                   <option value="minutes">minutes</option>
                   <option value="hours">hours</option>
@@ -60,7 +65,10 @@ export default function SessionDialog({ title, passData }) {
               </label>
             </div>
 
-            <input type="submit" className="self-right" />
+            <input
+              type="submit"
+              className="mt-2 self-right text-slate-300 font-thin hover:text-cyan-600"
+            />
           </form>
         </Dialog.Content>
       </Dialog.Portal>
