@@ -35,7 +35,7 @@ export default function SessionDialog({ title, passData }) {
               {"Project Title: "}
             </label>
             <input
-              className="ml-2 my-1 p-1 bg-slate-600 text-slate-300 font-thin rounded-md"
+              className="ml-2 my-1 p-1 bg-zinc-900 text-white font-light rounded-md"
               id="titleInput"
               type="text"
               {...register("currentTitle")}
@@ -48,7 +48,7 @@ export default function SessionDialog({ title, passData }) {
                 {"Today's Goal: "}
               </label>
               <input
-                className="w-12 m-2 p-1 bg-slate-600 text-slate-300 font-thin rounded-md"
+                className="w-12 m-2 p-1 bg-zinc-900 text-white font-light rounded-md"
                 id="goal"
                 type="number"
                 {...register("goalNumber")}
@@ -57,7 +57,7 @@ export default function SessionDialog({ title, passData }) {
                 id="goal"
                 {...register("goalType")}
                 required={true}
-                className="m-1 px-1 py-1.5 bg-slate-600 text-slate-300 font-thin rounded-md"
+                className="m-1 px-1 py-1.5 bg-zinc-900 text-white font-light rounded-md"
               >
                 <option value="words">words</option>
                 <option value="minutes">minutes</option>

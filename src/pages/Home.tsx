@@ -11,10 +11,10 @@ export default function Home() {
         <img
           src={logo}
           alt="Think-Write Logo"
-          className="w-36 h-36 m-auto md:h-60 md:w-60 animate-fade"
+          className="w-24 h-24 m-auto md:h-60 md:w-60 animate-fade"
         />
-        <div className="flex flex-col gap-4 p-4 w-4/5 md:w-2/3 self-center m-auto my-5 rounded-3xl">
-          <h1 className="my-2 md:my-4 text-lg md:text-3xl text-cyan-300">
+        <div className="flex flex-col gap-3 p-4 w-4/5 md:w-2/3 self-center m-auto rounded-3xl">
+          <h1 className="text-lg md:text-3xl text-cyan-300">
             Welcome to Think-Write!
           </h1>
           <p className="text-xs md:text-lg text-slate-300 font-thin"></p>

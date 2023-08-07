@@ -84,7 +84,7 @@ export default function Navbar() {
   const width = useRef(window.innerWidth);
 
   return (
-    <header className="md:h-10 md:my-5 bg-neutral-900 sticky top-0 opacity-75">
+    <header className="mb-5 md:mb-10 md:h-10 bg-neutral-900 sticky top-0 opacity-75">
       <div className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/think-write/" className="flex items-center">

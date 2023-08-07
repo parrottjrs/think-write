@@ -1,13 +1,12 @@
-import React from "react";
+import { Pencil } from "lucide-react";
+import React, { useRef } from "react";
 
 export default function EditButton({ onClick }) {
+  const width = useRef(window.innerWidth);
+  const size = width.current < 768 ? 16 : 24;
   return (
-    <button
-      id="edit"
-      className="self-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded m-5"
-      onClick={onClick}
-    >
-      Edit
+    <button id="edit" onClick={onClick}>
+      <Pencil className="text-slate-300 hover:text-yellow-400" size={size} />
     </button>
   );
 }

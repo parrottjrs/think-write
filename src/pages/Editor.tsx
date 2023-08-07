@@ -88,7 +88,7 @@ export default function Editor() {
     <div>
       <Navbar />
       <div className="w-75% flex flex-col items-center">
-        <h1 className="self-center md: text-3xl text-cyan-300 my-5 font-semibold p">
+        <h1 className="self-center md: text-3xl text-cyan-300 my-3 font-thin">
           {data.currentTitle}
         </h1>
         <SessionDialog
@@ -98,8 +98,13 @@ export default function Editor() {
           }}
         />
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
-        <div className="w-4/5 md:w-2/3 text-slate-400">
-          <ReactQuill theme="snow" value={text} onChange={handleChange} />
+        <div className="w-4/5 md:w-2/3">
+          <ReactQuill
+            theme="snow"
+            className="text-slate-300 text-thin"
+            value={text}
+            onChange={handleChange}
+          />
         </div>
         {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
           <ProgressBar progress={progress} />

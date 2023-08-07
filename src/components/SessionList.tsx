@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
 import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
+import { ArrowDownFromLine, XCircle } from "lucide-react";
 
 function SessionListItem({ session, id, hot, sessions, title }) {
   const { cold, sessionId, unlockDate } = session;
@@ -31,50 +32,71 @@ function SessionListItem({ session, id, hot, sessions, title }) {
   };
 
   return (
-    <div className="break-words p-2">
-      <p>Session {sessionId}</p>
-      <div>{!lockCheck(unlockDate) && <p>Locked until {unlockDate}</p>}</div>
-      {change ? (
-        <div dangerouslySetInnerHTML={{ __html: cold }} />
-      ) : (
-        <ReactQuill value={sessionText} onChange={handleChange} />
-      )}
-      <div>
-        {lockCheck(unlockDate) && (
+    <section className="break-words mt-5 md:mt-8">
+      <div className="flex items-center">
+        <p className="text-cyan-300 font-thin text-sm md:text-lg mr-4">
+          Session {sessionId}
+        </p>
+        {lockCheck(unlockDate) ? (
           <EditButton
             onClick={() => {
               setChange(!change);
             }}
           />
+        ) : (
+          <p className="text-slate-400 text-xs md:text-md font-thin">
+            Locked until {unlockDate}
+          </p>
         )}
       </div>
-    </div>
+      <div className="my-1 border border-slate-600/25" />
+      {change ? (
+        <div
+          className="my-1 text-slate-300 text-sm md:text-lg font-thin "
+          dangerouslySetInnerHTML={{ __html: cold }}
+        />
+      ) : (
+        <ReactQuill
+          className="text-slate-300"
+          value={sessionText}
+          onChange={handleChange}
+        />
+      )}
+      <div className="my-1 border border-slate-600" />
+    </section>
   );
 }
 
 export default function SessionList({ id, sessions, hot, title }) {
   const [open, setOpen] = useState(false);
-
+  const width = useRef(window.innerWidth);
+  const size = width.current < 768 ? 16 : 24;
   if (!sessions.length) {
     return null;
   }
   return (
     <Collapsible.Root
-      className="w-[80%] self-center mb-5"
+      className="w-4/5 md:w-2/3 self-center mb-5"
       open={open}
       onOpenChange={setOpen}
     >
-      <div className="bg-white rounded my-[10px] p-[10px] shadow-[0_2px_10px] shadow-blackA7 flex justify-between">
-        <span className="text-violet11 text-[15px] leading-[25px]">
-          Locked Sessions
+      <div className="border border-slate-400 rounded my-[10px] p-[10px] flex justify-between">
+        <span className="text-xs md:text-lg text-slate-300 font-thin">
+          Past Sessions
         </span>
-
         <Collapsible.Trigger asChild>
-          <button
-            id={open ? "close" : "open"}
-            className="rounded-full h-[25px] w-[25px] inline-flex items-center justify-center shadow-[0_2px_10px] shadow-blackA7 outline-none data-[state=closed]:bg-white data-[state=open]:bg-violet3 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
-          >
-            {open ? <Cross2Icon /> : <RowSpacingIcon />}
+          <button id={open ? "close" : "open"}>
+            {open ? (
+              <XCircle
+                className="text-slate-300 hover:text-slate-600"
+                size={size}
+              />
+            ) : (
+              <ArrowDownFromLine
+                className="text-slate-300 hover:text-slate-600"
+                size={size}
+              />
+            )}
           </button>
         </Collapsible.Trigger>
       </div>
