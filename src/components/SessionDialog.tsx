@@ -6,7 +6,7 @@ export default function SessionDialog({ title, passData }) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       currentTitle: title,
-      goalType: "wordCount",
+      goalType: "words",
       goalNumber: 0,
     },
   });
@@ -32,42 +32,42 @@ export default function SessionDialog({ title, passData }) {
             })}
           >
             <label htmlFor="titleInput" className="text-slate-300 font-thin">
-              {"Project Title:"}
-              <input
-                className="ml-2 my-1 p-1 bg-slate-600 rounded-md"
-                id="titleInput"
-                type="text"
-                {...register("currentTitle")}
-                defaultValue={title}
-                required={true}
-              />
+              {"Project Title: "}
             </label>
+            <input
+              className="ml-2 my-1 p-1 bg-slate-600 text-slate-300 font-thin rounded-md"
+              id="titleInput"
+              type="text"
+              {...register("currentTitle")}
+              defaultValue={title}
+              required={true}
+            />
+
             <div>
               <label htmlFor="goal" className="text-slate-300 font-thin">
-                Today's Goal:
-                <input
-                  className="w-12 m-2 p-1 bg-slate-600 rounded-md"
-                  id="goal"
-                  type="number"
-                  {...register("goalNumber")}
-                />
-                <select
-                  id="goal"
-                  {...register("goalType")}
-                  required={true}
-                  className="m-1 px-1 py-1.5 bg-slate-600 rounded-md"
-                >
-                  <option value="wordCount">words</option>
-                  <option value="minutes">minutes</option>
-                  <option value="hours">hours</option>
-                  <option value="noGoal">No goal</option>
-                </select>
+                {"Today's Goal: "}
               </label>
+              <input
+                className="w-12 m-2 p-1 bg-slate-600 text-slate-300 font-thin rounded-md"
+                id="goal"
+                type="number"
+                {...register("goalNumber")}
+              />
+              <select
+                id="goal"
+                {...register("goalType")}
+                required={true}
+                className="m-1 px-1 py-1.5 bg-slate-600 text-slate-300 font-thin rounded-md"
+              >
+                <option value="words">words</option>
+                <option value="minutes">minutes</option>
+                <option value="hours">hours</option>
+                <option value="noGoal">No goal</option>
+              </select>
             </div>
-
             <input
               type="submit"
-              className="mt-2 self-right text-slate-300 font-thin hover:text-cyan-600"
+              className="mt-2 self-right text-slate-300 font-thin hover:text-cyan-300"
             />
           </form>
         </Dialog.Content>

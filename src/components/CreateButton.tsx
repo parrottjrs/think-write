@@ -5,7 +5,8 @@ export default function CreateButton() {
   return (
     <a
       href={`/think-write/edit/${uuid()}`}
-      className="self-center bg-green-600 hover:bg-green-700 text-white font-bold text-sm md:text-lg py-1 md:py-2 px-2 md:px-4 border border-green-400 rounded  hover:bg-green-900"
+      aria-label="Start a new project"
+      className="self-center bg-green-900 hover:bg-green-600 text-white text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 border border-green-600 rounded"
     >
       New Project
     </a>

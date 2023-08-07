@@ -70,7 +70,10 @@ export default function SessionList({ id, sessions, hot, title }) {
         </span>
 
         <Collapsible.Trigger asChild>
-          <button className="rounded-full h-[25px] w-[25px] inline-flex items-center justify-center shadow-[0_2px_10px] shadow-blackA7 outline-none data-[state=closed]:bg-white data-[state=open]:bg-violet3 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black">
+          <button
+            id={open ? "close" : "open"}
+            className="rounded-full h-[25px] w-[25px] inline-flex items-center justify-center shadow-[0_2px_10px] shadow-blackA7 outline-none data-[state=closed]:bg-white data-[state=open]:bg-violet3 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
+          >
             {open ? <Cross2Icon /> : <RowSpacingIcon />}
           </button>
         </Collapsible.Trigger>

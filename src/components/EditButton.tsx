@@ -3,6 +3,7 @@ import React from "react";
 export default function EditButton({ onClick }) {
   return (
     <button
+      id="edit"
       className="self-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded m-5"
       onClick={onClick}
     >
