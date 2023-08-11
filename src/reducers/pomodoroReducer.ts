@@ -36,7 +36,13 @@ export const pomReducer = (state, action) => {
       };
     case "STOP_TIMER":
       return {
-        INITIAL_STATE,
+        toggleIcon: false,
+        pomType: "",
+        seconds: 0,
+        minutes: 0,
+        reps: 0,
+        showModal: false,
+        breakTime: false,
       };
     case "SUBTRACT_SECOND":
       return {
@@ -50,16 +56,19 @@ export const pomReducer = (state, action) => {
         seconds: 59,
       };
     case "SHOW_MODAL":
-      console.log(state);
-      return { ...state, showModal: true };
+      return { ...state, showModal: !state.showModal };
     case "BREAK_TIME":
-      return { ...state, breakTime: true, minutes: action.payload };
+      return {
+        ...state,
+        breakTime: true,
+        minutes: action.payload,
+        reps: state.reps - 1,
+      };
     case "WORK_TIME":
       return {
         ...state,
         breakTime: false,
         minutes: action.payload,
-        reps: state.reps - 1,
       };
     default:
       return state;

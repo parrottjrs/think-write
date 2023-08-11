@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Menu } from "lucide-react";
 import words from "../images/logo-just-words.png";
-import Pomodoro from "./Pomodoro";
 import PomodoroModal from "./Pomodoro";
 
 const LinkList = () => {
@@ -84,23 +83,17 @@ export default function Navbar({ writing = false }) {
   const width = useRef(window.innerWidth);
 
   return (
-    <header className="mb-5 md:mb-10 md:h-10 bg-neutral-900 sticky top-0 opacity-75">
-      <div className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/think-write/" className="flex items-center">
-            <img src={words} alt="Think-Write" className="h-3 md: h-5" />
-          </a>
-          <div className="flex">
-            {writing ? <PomodoroModal /> : null}
-            <nav
-              className="w-full contents md:block md:w-auto px-7"
-              id="navbar-solid-bg"
-            >
-              {width.current < 767 && <Dropdown />}
-              {width.current > 767 && <LinkList />}
-            </nav>
-          </div>
-        </div>
+    <header className="mb-5 md:mb-10 md:h-20 bg-neutral-900 sticky top-0 opacity-75 max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <img src={words} alt="Think-Write" className="h-4 md: h-5" />
+      <div className="flex items-center">
+        {writing ? <PomodoroModal /> : null}
+        <nav
+          className="w-full contents md:block md:w-auto px-7"
+          id="navbar-solid-bg"
+        >
+          {width.current < 767 && <Dropdown />}
+          {width.current > 767 && <LinkList />}
+        </nav>
       </div>
     </header>
   );

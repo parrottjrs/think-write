@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
 import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 import { ArrowDownFromLine, XCircle } from "lucide-react";
 
-function SessionListItem({ session, id, hot, sessions, title }) {
+const SessionListItem = ({ session, id, hot, sessions, title }) => {
   const { cold, sessionId, unlockDate } = session;
 
   const [change, setChange] = useState(true);
@@ -65,7 +64,7 @@ function SessionListItem({ session, id, hot, sessions, title }) {
       <div className="my-1 border border-slate-600" />
     </section>
   );
-}
+};
 
 export default function SessionList({ id, sessions, hot, title }) {
   const [open, setOpen] = useState(false);

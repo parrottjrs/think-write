@@ -42,7 +42,6 @@ export default function SessionDialog({ title, passData }) {
               defaultValue={title}
               required={true}
             />
-
             <div>
               <label htmlFor="goal" className="text-slate-300 font-thin">
                 {"Today's Goal: "}
@@ -54,7 +53,7 @@ export default function SessionDialog({ title, passData }) {
                 {...register("goalNumber")}
               />
               <select
-                id="goal"
+                id="goalType"
                 {...register("goalType")}
                 required={true}
                 className="m-1 px-1 py-1.5 bg-zinc-900 text-white font-light rounded-md"
