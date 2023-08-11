@@ -54,6 +54,8 @@ export default function Editor() {
 
     if (progress < 100) {
       switch (data.goalType) {
+        case "noGoal":
+          break;
         case "minutes":
           timing = data.goalNumber * 600;
           interval = setInterval(() => setProgress(progress + 1), timing);
@@ -71,8 +73,6 @@ export default function Editor() {
           const percentage = (wordCounter(hot) / data.goalNumber) * 100;
           setProgress(percentage);
           break;
-        case "noGoal":
-          break;
         default:
           throw new Error("Invalid goalType: " + data.goalType);
       }
@@ -86,7 +86,7 @@ export default function Editor() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar writing={true} />
       <div className="w-75% flex flex-col items-center">
         <h1 className="self-center md: text-3xl text-cyan-300 my-3 font-thin">
           {data.currentTitle}
@@ -101,7 +101,7 @@ export default function Editor() {
         <div className="w-4/5 md:w-2/3">
           <ReactQuill
             theme="snow"
-            className="text-slate-300 text-thin"
+            className="border-0 text-slate-300 text-thin"
             value={text}
             onChange={handleChange}
           />

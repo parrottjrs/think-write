@@ -9,9 +9,12 @@ export default function NavigateToEdit({ id }) {
     <a
       href={`/think-write/edit/${id}`}
       aria-label="Open a new session or edit past sessions"
-      className="hover:text-yellow-400"
     >
-      <Pencil className="mr-5" size={size} />
+      <Pencil
+        className="mr-5 hover:text-yellow-400"
+        size={size}
+        strokeWidth={1}
+      />
     </a>
   );
 }

@@ -6,12 +6,11 @@ export default function DeleteButton({ onClick }) {
   const size = width.current < 768 ? 16 : 24;
   return (
     <button
-      id-al
       aria-label="Delete this project"
       className="hover:text-red-400"
       onClick={onClick}
     >
-      <Trash2 size={size} />
+      <Trash2 size={size} strokeWidth={1} />
     </button>
   );
 }
