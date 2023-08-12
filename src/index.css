@@ -4,5 +4,19 @@
 
 body {
   background-color: rgb(24, 24, 27);
-  margin: 0;
+  margin: 0px;
+}
+
+.ql-editor {
+  font-family: Courier New;
+  font-size: 16px;
+  line-height: 1.5rem;
+}
+
+.ql-editor.ql-blank::before {
+  color: rgb(229, 231, 235);
+}
+
+.ql-tooltip-editor {
+  display: none;
 }

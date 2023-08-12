@@ -46,7 +46,7 @@ export default function Home() {
           </p>
           <div>
             <h2 className="mb-2 md:mb-4 md:text-2xl text-cyan-300">How to</h2>
-            <img src={words} alt="Think-Write" />
+            <img src={words} alt="Think-Write" className="w-40 md:w-72" />
           </div>
           <p className="text-xs md:text-lg text-slate-300 font-thin">
             Thinking-Write is easy. Think of something you want to write.

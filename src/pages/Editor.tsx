@@ -8,8 +8,8 @@ import { createProject, formatDate, saveProject } from "../utils/utils";
 import SessionList from "../components/SessionList";
 import SessionDialog from "../components/SessionDialog";
 import Navbar from "../components/Navbar";
-import ProjectsNavButton from "../components/ProjectsNavButton";
 import * as Progress from "@radix-ui/react-progress";
+import Pomodoro from "../components/Pomodoro";
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -39,6 +39,7 @@ export default function Editor() {
     goalNumber: 0,
   });
   const [progress, setProgress] = useState(0);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     saveProject({
@@ -86,30 +87,35 @@ export default function Editor() {
 
   return (
     <div>
-      <Navbar writing={true} />
-      <div className="w-75% flex flex-col items-center">
-        <h1 className="self-center md: text-3xl text-cyan-300 my-3 font-thin">
+      <Navbar />
+      <div className="w-full flex flex-col items-center">
+        <h1 className="self-center md:text-3xl text-cyan-300 my-3 font-thin">
           {data.currentTitle}
         </h1>
-        <SessionDialog
-          title={title}
-          passData={(data) => {
-            setData(data);
-          }}
-        />
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
+        <div className="w-4/5 h-px bg-gray-200 my-1 mx-2 opacity-50" />
         <div className="w-4/5 md:w-2/3">
           <ReactQuill
-            theme="snow"
-            className="border-0 text-slate-300 text-thin"
+            theme="bubble"
+            className="text-slate-300 tracking-wider"
+            placeholder="tell us a story..."
             value={text}
             onChange={handleChange}
+          />
+        </div>
+        <div className="w-4/5 h-px mb-4 bg-gray-200 my-1 mx-2 opacity-50" />
+        <div className="w-4/5 flex justify-end">
+          <Pomodoro />
+          <SessionDialog
+            title={title}
+            passData={(data) => {
+              setData(data);
+            }}
           />
         </div>
         {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
           <ProgressBar progress={progress} />
         )}
-        <ProjectsNavButton />
         <SaveButton id={id} />
       </div>
     </div>

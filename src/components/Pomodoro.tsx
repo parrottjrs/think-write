@@ -110,7 +110,7 @@ export default function Pomodoro() {
   };
 
   return (
-    <div className="m-3 text-slate-300 font-thin">
+    <div className="mr-3 text-slate-300 font-thin">
       {state.showModal && (
         <div
           className="absolute w-screen h-screen inset-0 opacity-0"

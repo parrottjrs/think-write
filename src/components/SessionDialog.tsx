@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Settings2 } from "lucide-react";
 
 export default function SessionDialog({ title, passData }) {
   const { register, handleSubmit } = useForm({
@@ -15,9 +16,12 @@ export default function SessionDialog({ title, passData }) {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger className="">
+        <Settings2 className="text-slate-300" strokeWidth={1} />
+      </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+        <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
           <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium">
             Project/Session Details
           </Dialog.Title>
