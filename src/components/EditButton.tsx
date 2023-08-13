@@ -1,14 +1,11 @@
 import { Pencil } from "lucide-react";
-import React, { useRef } from "react";
+import React from "react";
 
 export default function EditButton({ onClick }) {
-  const width = useRef(window.innerWidth);
-  const size = width.current < 768 ? 16 : 24;
   return (
     <button id="edit" onClick={onClick}>
       <Pencil
-        className="text-slate-300 hover:text-yellow-400"
-        size={size}
+        className="p-0.5 md:p-0 text-slate-300 hover:text-yellow-400"
         strokeWidth={1}
       />
     </button>

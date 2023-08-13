@@ -9,7 +9,7 @@ const LinkList = () => {
       <li>
         <a
           href="/think-write/"
-          className="block py-2 pl-3 pr-4 text-gray-900 font-thin rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+          className="block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
         >
           Home
         </a>
@@ -17,7 +17,7 @@ const LinkList = () => {
       <li>
         <a
           href="/think-write/projects"
-          className="block py-2 pl-3 pr-4 text-gray-900 font-thin rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+          className="block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
         >
           Projects
         </a>
@@ -25,7 +25,7 @@ const LinkList = () => {
       <li>
         <a
           href="/think-write/about"
-          className="block py-2 pl-3 pr-4 text-gray-900 font-thin rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+          className="block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
         >
           About
         </a>
@@ -39,16 +39,16 @@ const Dropdown = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button aria-label="Dropdown menu for navigation">
-          <Menu />
+          <Menu className="text-slate-300" strokeWidth={1} />
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
-          <div className="mt-5 mr-4 rounded-xl bg-sky-700/75">
+          <div className="mt-5 mr-4 rounded-xl bg-sky-700/95">
             <DropdownMenu.Item>
               <a
                 href="/think-write/"
-                className="block pt-2 pb-1 pl-3 pr-4 text-gray-900 font-thin md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block pt-2 pb-1 pl-3 pr-4 text-gray-900 font-thin tracking-wider md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Home
               </a>
@@ -57,7 +57,7 @@ const Dropdown = () => {
             <DropdownMenu.Item>
               <a
                 href="/think-write/projects"
-                className="block py-1 pl-3 pr-4 text-gray-900 font-thin hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block py-1 pl-3 pr-4 text-gray-900 font-thin tracking-wider hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Projects
               </a>
@@ -66,7 +66,7 @@ const Dropdown = () => {
             <DropdownMenu.Item>
               <a
                 href={"/think-write/about"}
-                className="block pt-1 pb-2 pl-3 pr-4 text-gray-900 font-thin hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block pt-1 pb-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 About
               </a>
@@ -82,7 +82,7 @@ export default function Navbar() {
   const width = useRef(window.innerWidth);
 
   return (
-    <header className="z-10  self-center mb-5 md:mb-10 md:h-20 bg-neutral-900 sticky top-0 opacity-95 flex flex-wrap items-center justify-between p-4 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <header className="z-10  self-center mb-5 md:mb-10 md:h-20 bg-gray-800/95 sticky top-0 opacity-95 flex flex-wrap items-center justify-between p-4 border-gray-200 bg-gray-50 dark:bg-gray-800/95 dark:border-gray-700">
       <img src={words} alt="Think-Write" className="h-4 md: h-5 md:px-7" />
       <div className="flex items-center">
         <nav

@@ -25,9 +25,10 @@ export default function SessionDialog({ title, passData }) {
           <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium">
             Project/Session Details
           </Dialog.Title>
-          <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-slate-300 font-thin leading-normal">
+          <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-white font-thin tracking-wider leading-normal">
             Name your project and select a goal for your current writing
             session, or select "no goal". Click submit when you're finished.
+            Press ESC or click away to exit.
           </Dialog.Description>
           <form
             onSubmit={handleSubmit((data) => {
@@ -35,23 +36,29 @@ export default function SessionDialog({ title, passData }) {
               setOpen(false);
             })}
           >
-            <label htmlFor="titleInput" className="text-slate-300 font-thin">
+            <label
+              htmlFor="titleInput"
+              className="text-slate-300 font-thin tracking-wider"
+            >
               {"Project Title: "}
             </label>
             <input
-              className="ml-2 my-1 p-1 bg-zinc-900 text-white font-light rounded-md"
+              className="ml-2 my-1 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
               id="titleInput"
               type="text"
               {...register("currentTitle")}
               defaultValue={title}
-              required={true}
+              required={false}
             />
             <div>
-              <label htmlFor="goal" className="text-slate-300 font-thin">
+              <label
+                htmlFor="goal"
+                className="text-slate-300 font-thin tracking-wider"
+              >
                 {"Today's Goal: "}
               </label>
               <input
-                className="w-12 m-2 p-1 bg-zinc-900 text-white font-light rounded-md"
+                className="w-12 m-2 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
                 id="goal"
                 type="number"
                 {...register("goalNumber")}
@@ -60,7 +67,7 @@ export default function SessionDialog({ title, passData }) {
                 id="goalType"
                 {...register("goalType")}
                 required={true}
-                className="m-1 px-1 py-1.5 bg-zinc-900 text-white font-light rounded-md"
+                className="m-1 px-1 py-1.5 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
               >
                 <option value="words">words</option>
                 <option value="minutes">minutes</option>
@@ -70,7 +77,7 @@ export default function SessionDialog({ title, passData }) {
             </div>
             <input
               type="submit"
-              className="mt-2 self-right text-slate-300 font-thin hover:text-cyan-300"
+              className="mt-2 self-right text-slate-300 font-thin tracking-wider hover:text-cyan-300"
             />
           </form>
         </Dialog.Content>

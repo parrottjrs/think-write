@@ -33,7 +33,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
   return (
     <section className="break-words mt-5 md:mt-8">
       <div className="flex items-center">
-        <p className="text-cyan-300 font-thin text-sm md:text-lg mr-4">
+        <p className="text-cyan-300 font-thin tracking-wider text-md md:text-xl mr-4">
           Session {sessionId}
         </p>
         {lockCheck(unlockDate) ? (
@@ -43,15 +43,15 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
             }}
           />
         ) : (
-          <p className="text-slate-400 text-xs md:text-md font-thin">
+          <p className="text-slate-300 text-xs md:text-md font-thin tracking-wider">
             Locked until {unlockDate}
           </p>
         )}
       </div>
-      <div className="my-1 border border-slate-600/25" />
+      <div className="my-2 border border-slate-600/25" />
       {change ? (
         <div
-          className="my-1 text-slate-300 text-sm md:text-lg font-thin "
+          className="my-1 text-slate-300 text-sm md:text-lg font-thin tracking-wider"
           dangerouslySetInnerHTML={{ __html: cold }}
         />
       ) : (
@@ -61,7 +61,6 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
           onChange={handleChange}
         />
       )}
-      <div className="my-1 border border-slate-600" />
     </section>
   );
 };
@@ -80,21 +79,15 @@ export default function SessionList({ id, sessions, hot, title }) {
       onOpenChange={setOpen}
     >
       <div className="border border-slate-400 rounded my-[10px] p-[10px] flex justify-between">
-        <span className="text-xs md:text-lg text-slate-300 font-thin">
+        <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
           Past Sessions
-        </span>
+        </p>
         <Collapsible.Trigger asChild>
           <button id={open ? "close" : "open"}>
             {open ? (
-              <XCircle
-                className="text-slate-300 hover:text-slate-600"
-                size={size}
-              />
+              <XCircle className="p-0.5 text-slate-300  hover:text-slate-600" />
             ) : (
-              <ArrowDownFromLine
-                className="text-slate-300 hover:text-slate-600"
-                size={size}
-              />
+              <ArrowDownFromLine className="p-0.5 text-slate-300 hover:text-slate-600" />
             )}
           </button>
         </Collapsible.Trigger>

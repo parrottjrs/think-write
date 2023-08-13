@@ -12,7 +12,7 @@ const Modal = ({ show, onClick }) => {
     return null;
   }
   return (
-    <div className="absolute -right-7 w-20 py-2 px-1 text-slate-300 fon-thin rounded-xl bg-sky-700/75">
+    <div className="absolute -right-7 w-20 py-2 px-1 text-slate-300 fon-thin tracking-wider rounded-xl bg-sky-700/75">
       <button
         className="mx-4 my-1"
         aria-label="start a pomodoro timer for 4 reps. Each rep is 20 minutes with a 5 minute break."
@@ -110,7 +110,7 @@ export default function Pomodoro() {
   };
 
   return (
-    <div className="mr-3 text-slate-300 font-thin">
+    <div className="mr-3 text-slate-300 font-thin tracking-wider">
       {state.showModal && (
         <div
           className="absolute w-screen h-screen inset-0 opacity-0"
@@ -123,17 +123,14 @@ export default function Pomodoro() {
             id="timerMenu"
             onClick={() => dispatch({ type: ACTIONS.SHOW_MODAL })}
           >
-            <Timer className="pt-1 hover:text-green-300" strokeWidth={1} />
+            <Timer className="hover:text-green-300" strokeWidth={1} />
           </button>
           <Modal show={state.showModal} onClick={startTimer} />
         </div>
       ) : (
         <div className="flex flex-row items-center">
           <button id="stopTimer" onClick={() => stopTimer()}>
-            <TimerOff
-              className="pt-1 mb-1 mr-2 hover:text-red-300"
-              strokeWidth={1}
-            />
+            <TimerOff className="mr-2 hover:text-red-300" strokeWidth={1} />
           </button>
           <div>
             {prependZero(state.minutes)}:{prependZero(state.seconds)}

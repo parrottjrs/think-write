@@ -10,6 +10,7 @@ import SessionDialog from "../components/SessionDialog";
 import Navbar from "../components/Navbar";
 import * as Progress from "@radix-ui/react-progress";
 import Pomodoro from "../components/Pomodoro";
+import { Lock } from "lucide-react";
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -31,6 +32,7 @@ export default function Editor() {
   const id = params.id;
 
   let { sessions, hot = "", title = "" } = createProject(id);
+  const sessionNumber = sessions.length + 1;
 
   const [text, setText] = useState(hot);
   const [data, setData] = useState({
@@ -39,7 +41,6 @@ export default function Editor() {
     goalNumber: 0,
   });
   const [progress, setProgress] = useState(0);
-  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     saveProject({
@@ -89,23 +90,29 @@ export default function Editor() {
     <div>
       <Navbar />
       <div className="w-full flex flex-col items-center">
-        <h1 className="self-center md:text-3xl text-cyan-300 my-3 font-thin">
+        <h1 className="self-center text-lg md:text-3xl text-cyan-300 tracking-wider my-3 font-thin">
           {data.currentTitle}
         </h1>
         <SessionList id={id} sessions={sessions} hot={hot} title={title} />
+        <div className="w-4/5 flex justify-start">
+          <p className="text-slate-300 font-thin tracking-wider">
+            Session {sessionNumber}, {formatDate(new Date())}
+          </p>
+        </div>
         <div className="w-4/5 h-px bg-gray-200 my-1 mx-2 opacity-50" />
         <div className="w-4/5 md:w-2/3">
           <ReactQuill
             theme="bubble"
             className="text-slate-300 tracking-wider"
-            placeholder="tell us a story..."
+            placeholder="tell your story..."
             value={text}
             onChange={handleChange}
           />
         </div>
         <div className="w-4/5 h-px mb-4 bg-gray-200 my-1 mx-2 opacity-50" />
-        <div className="w-4/5 flex justify-end">
+        <div className="w-4/5 flex justify-end contents-center">
           <Pomodoro />
+          <Lock className="text-slate-300 mr-3" strokeWidth={1} />
           <SessionDialog
             title={title}
             passData={(data) => {
@@ -113,6 +120,7 @@ export default function Editor() {
             }}
           />
         </div>
+
         {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
           <ProgressBar progress={progress} />
         )}

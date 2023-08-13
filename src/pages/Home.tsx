@@ -13,12 +13,12 @@ export default function Home() {
           alt="Think-Write Logo"
           className="w-24 h-24 m-auto md:h-60 md:w-60 animate-fade"
         />
-        <div className="flex flex-col gap-3 p-4 w-4/5 md:w-2/3 self-center m-auto rounded-3xl">
-          <h1 className="text-lg md:text-3xl text-cyan-300">
+        <div className="flex flex-col gap-3 mt-3 p-4 w-4/5 md:w-2/3 self-center justify-center m-auto rounded-3xl font-thin tracking-wider">
+          <div className="w-full mb-3 h-px bg-gray-200  opacity-50" />
+          <h1 className="text-lg md:text-3xl text-cyan-300 font-thin tracking-wider">
             Welcome to Think-Write!
           </h1>
-          <p className="text-xs md:text-lg text-slate-300 font-thin"></p>
-          <p className="text-xs md:text-lg text-slate-300 font-thin">
+          <p className="text-xs md:text-lg text-slate-300 font-thin ">
             This app was created and designed by Jordan Parrott, a student of
             Get Coding NL. It uses a combination of React and Tailwind CSS, as
             well as components like React-Quill. Building on his last project,{" "}
@@ -32,7 +32,7 @@ export default function Home() {
             around. To learn more about him, and the "why" behind this project{" "}
             <a
               href="/think-write/about"
-              className="text-cyan-300 hover:text-cyan-600 "
+              className="text-cyan-300 hover:text-cyan-600 font-thin"
             >
               click here.
             </a>
