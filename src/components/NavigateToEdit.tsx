@@ -5,7 +5,7 @@ import { Pencil } from "lucide-react";
 export default function NavigateToEdit({ id }) {
   return (
     <a
-      href={`/think-write/edit/${id}`}
+      href={`#/edit/${id}`}
       aria-label="Open a new session or edit past sessions"
     >
       <Pencil

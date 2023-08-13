@@ -45,6 +45,7 @@ export default function Pomodoro() {
 
   useEffect(() => {
     if (!state.toggleIcon) {
+      state.seconds = 0;
       return;
     }
     if (state.reps === 0) {
@@ -54,10 +55,8 @@ export default function Pomodoro() {
     const timer = setTimeout(() => {
       if (state.seconds === 0 && state.minutes > 0) {
         dispatch({ type: ACTIONS.SUBTRACT_MINUTE });
-        return () => clearTimeout(timer);
       } else if (state.seconds > 0) {
         dispatch({ type: ACTIONS.SUBTRACT_SECOND });
-        return () => clearTimeout(timer);
       } else if (
         state.seconds === 0 &&
         state.minutes === 0 &&
@@ -88,6 +87,7 @@ export default function Pomodoro() {
           }
         }
       }
+      return () => clearTimeout(timer);
     }, 1000);
   }, [state.seconds, state.minutes]);
 

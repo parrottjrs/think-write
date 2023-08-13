@@ -31,7 +31,7 @@ export default function Home() {
             Jordan was able to create something a little more personal this time
             around. To learn more about him, and the "why" behind this project{" "}
             <a
-              href="/think-write/about"
+              href="#/about"
               className="text-cyan-300 hover:text-cyan-600 font-thin"
             >
               click here.

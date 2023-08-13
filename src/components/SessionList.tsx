@@ -41,6 +41,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
         <p className="text-cyan-300 font-thin tracking-wider text-md md:text-xl mr-4">
           Session {sessionId}
         </p>
+
         <Collapsible.Trigger asChild>
           <button id={open ? "close" : "open"}>
             {open ? (

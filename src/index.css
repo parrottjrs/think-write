@@ -4,7 +4,7 @@
 
 body {
   background-color: rgb(24, 24, 27);
-  margin: 0px;
+  @apply m-0;
 }
 
 .ql-editor {
