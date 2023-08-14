@@ -83,7 +83,7 @@ export default function Navbar() {
 
   return (
     <header className="z-10  self-center mb-5 md:mb-10 md:h-20 bg-gray-800/95 sticky top-0 opacity-95 flex flex-wrap items-center justify-between p-4 border-gray-200 bg-gray-50 dark:bg-gray-800/95 dark:border-gray-700">
-      <img src={words} alt="Think-Write" className="h-4 md: h-5 md:px-7" />
+      <img src={words} alt="Think-Write" className="h-6 md:h-12 md:px-7" />
       <div className="flex items-center">
         <nav
           className="z-20 w-full contents md:block md:w-auto px-7"

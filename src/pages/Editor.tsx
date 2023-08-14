@@ -115,7 +115,7 @@ export default function Editor() {
           <Lock className="text-slate-300 mr-3" strokeWidth={1} />
           <SessionDialog
             title={title}
-            passData={(data) => {
+            onSubmit={(data) => {
               setData(data);
             }}
           />

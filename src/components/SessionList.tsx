@@ -81,7 +81,8 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
             />
           ) : (
             <ReactQuill
-              className="text-slate-300"
+              theme="bubble"
+              className="text-slate-300 tracking-wider"
               value={sessionText}
               onChange={handleChange}
             />

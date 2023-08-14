@@ -5,6 +5,7 @@ import Editor from "./pages/Editor";
 import Save from "./pages/Save";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/edit/:id" element={<Editor />} />
         <Route path="/edit/:id/save" element={<Save />} />
         <Route path="/about" element={<About />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </HashRouter>
   );

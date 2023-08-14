@@ -1,5 +1,5 @@
 import { Timer, TimerOff } from "lucide-react";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import {
   INITIAL_STATE,
   pomReducer,
@@ -7,12 +7,16 @@ import {
 } from "../reducers/pomodoroReducer";
 import beep from "../sounds/beep.wav";
 
+const playSound = () => {
+  new Audio(beep).play();
+};
+
 const Modal = ({ show, onClick }) => {
   if (!show) {
     return null;
   }
   return (
-    <div className="absolute -right-7 w-20 py-2 px-1 text-slate-300 fon-thin tracking-wider rounded-xl bg-sky-700/75">
+    <div className=" absolute -right-7 w-20 py-2 px-1 text-slate-300 fon-thin tracking-wider rounded-xl bg-sky-700/75">
       <button
         className="mx-4 my-1"
         aria-label="start a pomodoro timer for 4 reps. Each rep is 20 minutes with a 5 minute break."
@@ -38,17 +42,17 @@ const Modal = ({ show, onClick }) => {
 
 export default function Pomodoro() {
   const [state, dispatch] = useReducer(pomReducer, INITIAL_STATE);
-
-  const playSound = () => {
-    new Audio(beep).play();
-  };
+  const [enabled, setEnabled] = useState(false);
+  const [modal, showModal] = useState(false);
 
   useEffect(() => {
-    if (!state.toggleIcon) {
+    if (!enabled) {
       state.seconds = 0;
       return;
     }
     if (state.reps === 0) {
+      setEnabled(false);
+      showModal(false);
       dispatch({ type: ACTIONS.STOP_TIMER });
       return;
     }
@@ -63,28 +67,21 @@ export default function Pomodoro() {
         state.reps >= 1
       ) {
         playSound();
-        if (state.breakTime) {
-          switch (state.pomType) {
-            case "20/5":
-              dispatch({ type: ACTIONS.WORK_TIME, payload: 20 });
-              break;
-            case "40/10":
-              dispatch({ type: ACTIONS.WORK_TIME, payload: 40 });
-              break;
-            default:
-              throw new Error("Invalid pomType" + state.pomType);
-          }
-        } else {
-          switch (state.pomType) {
-            case "20/5":
-              dispatch({ type: ACTIONS.BREAK_TIME, payload: 5 });
-              break;
-            case "40/10":
-              dispatch({ type: ACTIONS.BREAK_TIME, payload: 10 });
-              break;
-            default:
-              throw new Error("Invalid pomType" + state.pomType);
-          }
+
+        switch (state.breakTime) {
+          case state.breakTime:
+            dispatch({
+              type: ACTIONS.WORK_TIME,
+              payload: state.Pomtype === "20/5" ? 20 : 40,
+            });
+            break;
+          case !state.breakTime:
+            dispatch({
+              type: ACTIONS.BREAK_TIME,
+              payload: state.Pomtype === "20/5" ? 5 : 10,
+            });
+          default:
+            throw new Error("invalid breakTime");
         }
       }
       return () => clearTimeout(timer);
@@ -92,6 +89,8 @@ export default function Pomodoro() {
   }, [state.seconds, state.minutes]);
 
   const startTimer = (pomType: string, workTime: number) => {
+    setEnabled(true);
+    showModal(false);
     dispatch({
       type: ACTIONS.START_TIMER,
       payload: { pomType: pomType, reps: 4, minutes: workTime },
@@ -99,6 +98,8 @@ export default function Pomodoro() {
   };
 
   const stopTimer = () => {
+    setEnabled(false);
+    showModal(false);
     dispatch({ type: ACTIONS.STOP_TIMER });
   };
 
@@ -111,21 +112,18 @@ export default function Pomodoro() {
 
   return (
     <div className="mr-3 text-slate-300 font-thin tracking-wider">
-      {state.showModal && (
+      {modal && (
         <div
-          className="absolute w-screen h-screen inset-0 opacity-0"
-          onClick={() => dispatch({ type: ACTIONS.SHOW_MODAL })}
+          className="fixed w-full h-full inset-0 opacity-0"
+          onClick={() => showModal(false)}
         ></div>
       )}
-      {!state.toggleIcon ? (
+      {!enabled ? (
         <div className="relative">
-          <button
-            id="timerMenu"
-            onClick={() => dispatch({ type: ACTIONS.SHOW_MODAL })}
-          >
+          <button id="timerMenu" onClick={() => showModal(true)}>
             <Timer className="hover:text-green-300" strokeWidth={1} />
           </button>
-          <Modal show={state.showModal} onClick={startTimer} />
+          <Modal show={modal} onClick={startTimer} />
         </div>
       ) : (
         <div className="flex flex-row items-center">

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Settings2 } from "lucide-react";
 
-export default function SessionDialog({ title, passData }) {
+export default function SessionDialog({ title, onSubmit }) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       currentTitle: title,
@@ -32,7 +32,7 @@ export default function SessionDialog({ title, passData }) {
           </Dialog.Description>
           <form
             onSubmit={handleSubmit((data) => {
-              passData(data);
+              onSubmit(data);
               setOpen(false);
             })}
           >
