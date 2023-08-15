@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Menu } from "lucide-react";
+import { Menu, Linkedin, Github, Mail } from "lucide-react";
 import words from "../images/logo-just-words.png";
 
 const LinkList = () => {
@@ -30,6 +30,30 @@ const LinkList = () => {
           About
         </a>
       </li>
+      <li>
+        <a href="https://ca.linkedin.com/in/parrottjrs">
+          <Linkedin
+            className="text-gray-900 font-thin hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            strokeWidth={1}
+          />
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/parrottjrs">
+          <Github
+            className="block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            strokeWidth={1}
+          />
+        </a>
+      </li>
+      <li>
+        <a href="mailto:parrottjrs@gmail.com">
+          <Mail
+            className="block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            strokeWidth={1}
+          />
+        </a>
+      </li>
     </ul>
   );
 };
@@ -44,7 +68,7 @@ const Dropdown = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content>
-          <div className="mt-5 mr-4 rounded-xl bg-sky-700/95">
+          <div className="w-28 mt-5 mr-4 rounded-xl bg-sky-700/95">
             <DropdownMenu.Item>
               <a
                 href="#/"
@@ -66,11 +90,29 @@ const Dropdown = () => {
             <DropdownMenu.Item>
               <a
                 href="#/about"
-                className="block pt-1 pb-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block pt-1 pb-1 pl-3 pr-4 text-gray-900 font-thin tracking-wider hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 About
               </a>
             </DropdownMenu.Item>
+            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <div className="flex flex-row justify-left pt-1 pb-2 pl-3">
+              <DropdownMenu.Item>
+                <a href="https://ca.linkedin.com/in/parrottjrs">
+                  <Linkedin className="p-0.5 mr-1 text-white" strokeWidth={1} />
+                </a>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <a href="https://github.com/parrottjrs">
+                  <Github className="p-0.5 mr-1 text-white" strokeWidth={1} />
+                </a>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <a href="mailto:parrottjrs@gmail.com">
+                  <Mail className="p-0.5 text-white" strokeWidth={1} />
+                </a>
+              </DropdownMenu.Item>
+            </div>
           </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

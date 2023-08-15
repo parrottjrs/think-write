@@ -21,6 +21,20 @@ export default function Projects() {
           <ProjectList />
         </div>
         <CreateButton />
+        <div className="w-4/5">
+          <h3 className="mt-10 mb-3 mx-auto text-md md:text-xl text-red-300">
+            An Important Note:
+          </h3>
+          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+            In its current state, Think-Write saves all data in your browser.
+            This will hopefully be changed in the coming months, but until then
+            please remember: If you clear your browser's history{" "}
+            <span className="text-red-300">all your data will be lost</span>. It
+            is very important to maintain your browser's local storage or save
+            your text elsewhere if you cannot do this. It's not ideal, but it's
+            only for now, and we don't want your hard work to be lost!
+          </p>
+        </div>
       </div>
     </div>
   );
