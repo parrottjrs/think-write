@@ -28,6 +28,7 @@ export default function LockCalendar() {
     sessions.push({
       sessionId: sessionNumber,
       cold: lockable.hot,
+      lockDate: formatDate(new Date()),
       unlockDate: formatDate(date),
     });
     lockable.hot = "";
@@ -42,19 +43,23 @@ export default function LockCalendar() {
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
         <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium">
-            Ready to Lock Your Current Session?
+          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium tracking-wider">
+            Ready to lock this session?
           </Dialog.Title>
-          <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-white font-thin tracking-wider leading-normal">
-            Select a Lock date. Our recommendation is 3 months from now. You
-            will still be able to use the text for reference if need be, but you
-            will not be able to edit it until the lock date has passed.
+          <Dialog.Description className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+            Select a Lock date. We recommend 3 months from now. You may still
+            refer to the text, but remember:{" "}
+            <span className="text-red-300 font-normal">
+              you will not be able to edit until the lock date has passed.
+            </span>{" "}
+            So be sure you're ready to lock it!
           </Dialog.Description>
           <div className="flex flex-col items-center">
             <Calendar
-              className="bg-slate-800 font-thin tracking-wider"
+              className="mt-2 md:mt-4 bg-zinc-900 text-white font-thin"
               onChange={handleChange}
               value={date}
+              calendarType="Hebrew"
             />
             <a href="#/projects">
               <input

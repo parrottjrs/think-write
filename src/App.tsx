@@ -5,6 +5,7 @@ import Editor from "./pages/Editor";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import "react-calendar/dist/Calendar.css";
 
 export default function App() {
   return (

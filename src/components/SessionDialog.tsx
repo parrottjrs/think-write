@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Settings2 } from "lucide-react";
+import { Pencil, Settings2 } from "lucide-react";
 
 export default function SessionDialog({ title, onSubmit }) {
   const { register, handleSubmit } = useForm({
@@ -13,6 +13,7 @@ export default function SessionDialog({ title, onSubmit }) {
   });
 
   const [open, setOpen] = useState(true);
+  const [titleInput, showTitleInput] = useState(title ? false : true);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -22,7 +23,7 @@ export default function SessionDialog({ title, onSubmit }) {
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
         <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium">
+          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium tracking-wider">
             Project/Session Details
           </Dialog.Title>
           <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-white font-thin tracking-wider leading-normal">
@@ -36,21 +37,39 @@ export default function SessionDialog({ title, onSubmit }) {
               setOpen(false);
             })}
           >
-            <label
-              htmlFor="titleInput"
-              className="text-slate-300 font-thin tracking-wider"
-            >
-              {"Project Title: "}
-            </label>
-            <input
-              className="ml-2 my-1 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
-              id="titleInput"
-              type="text"
-              {...register("currentTitle")}
-              defaultValue={title}
-              required={false}
-            />
-            <div>
+            <div className="flex flex-row">
+              <label
+                htmlFor="titleInput"
+                className="text-slate-300 font-thin tracking-wider"
+              >
+                {"Project Title:"}
+              </label>
+              {!titleInput ? (
+                <React.Fragment>
+                  <p className="ml-2 text-slate-300 font-thin tracking-wider">
+                    {title}
+                  </p>
+                  <button onClick={() => showTitleInput(true)}>
+                    <Pencil
+                      id="editTitle"
+                      className="ml-2 p-0.5 text-slate-300 hover:text-yellow-400"
+                      strokeWidth={1}
+                    />
+                  </button>
+                </React.Fragment>
+              ) : (
+                <input
+                  className="ml-2 mr-1 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
+                  id="titleInput"
+                  type="text"
+                  {...register("currentTitle")}
+                  defaultValue={title}
+                  required={false}
+                />
+              )}
+            </div>
+
+            <div className="mt-4 flex flex-row">
               <label
                 htmlFor="goal"
                 className="text-slate-300 font-thin tracking-wider"
@@ -58,7 +77,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 {"Today's Goal: "}
               </label>
               <input
-                className="w-12 m-2 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
+                className="w-12 ml-2 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
                 id="goal"
                 type="number"
                 {...register("goalNumber")}
@@ -67,7 +86,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 id="goalType"
                 {...register("goalType")}
                 required={true}
-                className="m-1 px-1 py-1.5 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
+                className="ml-2 px-1 py-1.5 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
               >
                 <option value="words">words</option>
                 <option value="minutes">minutes</option>
@@ -77,7 +96,7 @@ export default function SessionDialog({ title, onSubmit }) {
             </div>
             <input
               type="submit"
-              className="mt-2 self-right text-slate-300 font-thin tracking-wider hover:text-cyan-300"
+              className="mt-4 self-right text-slate-300 font-thin tracking-wider hover:text-cyan-300"
             />
           </form>
         </Dialog.Content>

@@ -6,7 +6,7 @@ import { formatDate, lockCheck, saveProject } from "../utils/utils";
 import { ArrowDownFromLine, XCircle } from "lucide-react";
 
 const SessionListItem = ({ session, id, hot, sessions, title }) => {
-  const { cold, sessionId, unlockDate } = session;
+  const { cold, sessionId, unlockDate, lockDate } = session;
 
   const [change, setChange] = useState(true);
   const [sessionText, setSessionText] = useState(cold);
@@ -41,7 +41,6 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
         <p className="text-cyan-300 font-thin tracking-wider text-md md:text-xl mr-4">
           Session {sessionId}
         </p>
-
         <Collapsible.Trigger asChild>
           <button id={open ? "close" : "open"}>
             {open ? (
@@ -57,6 +56,13 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
             )}
           </button>
         </Collapsible.Trigger>
+        {lockCheck(unlockDate)
+          ? null
+          : !open && (
+              <p className="ml-4 text-slate-300/75 text-xs md:text-md font-thin tracking-wider">
+                Locked until <br /> {unlockDate}
+              </p>
+            )}
       </div>
       <Collapsible.Content className="select-none">
         <section className="break-words mt-5 md:mt-8">
@@ -69,7 +75,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
               />
             ) : (
               <p className="text-slate-300 text-xs md:text-md font-thin tracking-wider">
-                Locked until {unlockDate}
+                Locked on {lockDate}
               </p>
             )}
           </div>
@@ -88,7 +94,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
             />
           )}
         </section>
-        <div className="w-4/5 h-px bg-gray-200 my-2 mx-2 opacity-50" />
+        <div className="my-2 border border-slate-600/25" />
       </Collapsible.Content>
     </Collapsible.Root>
   );

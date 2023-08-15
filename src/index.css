@@ -19,3 +19,54 @@ body {
 .ql-tooltip-editor {
   display: none;
 }
+
+.react-calendar__navigation button:disabled {
+  @apply bg-zinc-900;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  @apply bg-cyan-800;
+}
+
+.react-calendar__tile:disabled {
+  @apply bg-zinc-900;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  @apply bg-cyan-800;
+}
+
+.react-calendar__tile--now {
+  @apply bg-cyan-800/25;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  @apply bg-cyan-800;
+}
+
+.react-calendar__tile--hasActive {
+  @apply bg-cyan-800;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  @apply bg-cyan-800;
+}
+
+.react-calendar__tile--active {
+  @apply bg-cyan-400;
+}
+
+.react-calendar__tile--active:enabled:hover {
+  @apply bg-cyan-800;
+}
+.react-calendar__tile--active:enabled:focus {
+  @apply bg-cyan-400;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  @apply text-blue-400;
+}
