@@ -13,8 +13,8 @@ export default function NotFound() {
           className="w-28 md: w-72 mt-4 mb-4 md:mb-10"
         />
         <p className="text-cyan-300 text-lg md:text-2xl font-thin tracking-wider">
-          We're not sure what you're looking for, Chief, but this ain't it.
-          Show's over. Go on. Get out of here!
+          We're not sure what you're looking for, but this ain't it. Show's
+          over. Go on. Get out of here!
         </p>
       </section>
     </div>

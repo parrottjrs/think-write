@@ -77,11 +77,14 @@ export default function About() {
           </h1>
           <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
             Think-Write is designed to be a self-doubt killer. By locking up
-            writing "sessions", I hope to allow budding writers to be
-            unencumbered and press on despite all odds, so they may truly enjoy
-            the project they're working on, free from self-doubt. This, to me,
-            is the future of writing, and I invite you to join me on this
-            journey.
+            writing "sessions", I hope to help budding writers to carry out
+            their work unencumbered and press on despite all odds. That way they
+            may truly enjoy the project they're working on and be free from
+            self-doubt. This, to me, is the future of writing, and I invite you
+            to come with me on this journey.
+          </p>
+          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+            Until next time,
           </p>
           <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
             - Jordan

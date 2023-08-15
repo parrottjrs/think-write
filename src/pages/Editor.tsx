@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import SaveButton from "../components/SaveButton";
 import { useParams } from "react-router-dom";
 import { createProject, formatDate, saveProject } from "../utils/utils";
 import SessionList from "../components/SessionList";
@@ -10,7 +9,7 @@ import SessionDialog from "../components/SessionDialog";
 import Navbar from "../components/Navbar";
 import * as Progress from "@radix-ui/react-progress";
 import Pomodoro from "../components/Pomodoro";
-import { Lock } from "lucide-react";
+import LockCalendar from "../components/LockCalendar";
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -29,10 +28,10 @@ const ProgressBar = ({ progress }) => {
 
 export default function Editor() {
   const params = useParams();
-  const id = params.id;
+  const projectId = params.id;
 
-  let { sessions, hot = "", title = "" } = createProject(id);
-  const sessionNumber = sessions.length + 1;
+  let { sessions, hot = "", title = "" } = createProject(projectId);
+  const sessionId = sessions.length + 1;
 
   const [text, setText] = useState(hot);
   const [data, setData] = useState({
@@ -44,7 +43,7 @@ export default function Editor() {
 
   useEffect(() => {
     saveProject({
-      id: id,
+      id: projectId,
       title: data.currentTitle,
       hot: text,
       modified: formatDate(new Date()),
@@ -93,10 +92,15 @@ export default function Editor() {
         <h1 className="self-center text-lg md:text-3xl text-cyan-300 tracking-wider my-3 font-thin">
           {data.currentTitle}
         </h1>
-        <SessionList id={id} sessions={sessions} hot={hot} title={title} />
+        <SessionList
+          id={projectId}
+          sessions={sessions}
+          hot={hot}
+          title={title}
+        />
         <div className="w-4/5 flex justify-start">
           <p className="text-slate-300 font-thin tracking-wider">
-            Session {sessionNumber}, {formatDate(new Date())}
+            Session {sessionId}, {formatDate(new Date())}
           </p>
         </div>
         <div className="w-4/5 h-px bg-gray-200 my-1 mx-2 opacity-50" />
@@ -112,7 +116,7 @@ export default function Editor() {
         <div className="w-4/5 h-px mb-4 bg-gray-200 my-1 mx-2 opacity-50" />
         <div className="w-4/5 flex justify-end contents-center">
           <Pomodoro />
-          <Lock className="text-slate-300 mr-3" strokeWidth={1} />
+          <LockCalendar />
           <SessionDialog
             title={title}
             onSubmit={(data) => {
@@ -124,7 +128,6 @@ export default function Editor() {
         {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
           <ProgressBar progress={progress} />
         )}
-        <SaveButton id={id} />
       </div>
     </div>
   );

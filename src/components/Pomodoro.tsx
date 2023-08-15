@@ -111,7 +111,7 @@ export default function Pomodoro() {
   };
 
   return (
-    <div className="mr-3 text-slate-300 font-thin tracking-wider">
+    <div className="mt-1.5 mr-3 text-slate-300 font-thin tracking-wider">
       {modal && (
         <div
           className="fixed w-full h-full inset-0 opacity-0"
