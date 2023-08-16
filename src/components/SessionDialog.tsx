@@ -2,12 +2,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Pencil, Settings2 } from "lucide-react";
+import { STYLES } from "../utils/constants";
 
 export default function SessionDialog({ title, onSubmit }) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       currentTitle: title,
-      goalType: "words",
+      goalType: "noGoal",
       goalNumber: 0,
     },
   });
@@ -18,7 +19,10 @@ export default function SessionDialog({ title, onSubmit }) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="">
-        <Settings2 className="text-slate-300" strokeWidth={1} />
+        <Settings2
+          className="text-slate-300 hover:text-slate-50"
+          strokeWidth={1}
+        />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
@@ -26,7 +30,7 @@ export default function SessionDialog({ title, onSubmit }) {
           <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium tracking-wider">
             Project/Session Details
           </Dialog.Title>
-          <Dialog.Description className="mt-[10px] mb-5 text-[15px] text-white font-thin tracking-wider leading-normal">
+          <Dialog.Description className="mt-4 mb-5 text-s md:text-lg text-slate-300 font-thin tracking-wider">
             Name your project and select a goal for your current writing
             session, or select "no goal". Click submit when you're finished.
             Press ESC or click away to exit.
@@ -37,29 +41,26 @@ export default function SessionDialog({ title, onSubmit }) {
               setOpen(false);
             })}
           >
-            <div className="flex flex-row">
-              <label
-                htmlFor="titleInput"
-                className="text-slate-300 font-thin tracking-wider"
-              >
+            <div className="flex flex-row content-center">
+              <label htmlFor="titleInput" className={STYLES.STANDARD_TEXT}>
                 {"Project Title:"}
               </label>
               {!titleInput ? (
                 <React.Fragment>
-                  <p className="ml-2 text-slate-300 font-thin tracking-wider">
+                  <p className="mx-2 text-s md:text-lg text-slate-300 font-thin tracking-wider">
                     {title}
                   </p>
                   <button onClick={() => showTitleInput(true)}>
                     <Pencil
                       id="editTitle"
-                      className="ml-2 p-0.5 text-slate-300 hover:text-yellow-400"
+                      className={STYLES.PENCIL}
                       strokeWidth={1}
                     />
                   </button>
                 </React.Fragment>
               ) : (
                 <input
-                  className="ml-2 mr-1 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
+                  className="ml-2 p-1 bg-zinc-900 text-s md: text-lg text-white font-thin tracking-wider rounded-md"
                   id="titleInput"
                   type="text"
                   {...register("currentTitle")}
@@ -70,10 +71,7 @@ export default function SessionDialog({ title, onSubmit }) {
             </div>
 
             <div className="mt-4 flex flex-row">
-              <label
-                htmlFor="goal"
-                className="text-slate-300 font-thin tracking-wider"
-              >
+              <label htmlFor="goal" className={STYLES.STANDARD_TEXT}>
                 {"Today's Goal: "}
               </label>
               <input
@@ -94,10 +92,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 <option value="noGoal">No goal</option>
               </select>
             </div>
-            <input
-              type="submit"
-              className="mt-4 self-right text-slate-300 font-thin tracking-wider hover:text-cyan-300"
-            />
+            <input type="submit" className={STYLES.BLUE_BUTTON} />
           </form>
         </Dialog.Content>
       </Dialog.Portal>

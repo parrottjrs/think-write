@@ -1,58 +1,59 @@
 import React from "react";
 import error from "../images/error.png";
 import Navbar from "../components/Navbar";
+import { STYLES } from "../utils/constants";
 
 export default function NotFound() {
   return (
-    <div>
+    <div className={STYLES.PARENT_DIV}>
       <Navbar />
-      <section className="w-4/5 m-auto flex flex-col items-center">
+      <section className={STYLES.FLEX_GAP_DIV}>
         <img
           src={error}
           alt="404 error: not found"
-          className="w-28 md: w-72 mt-4 mb-4 md:mb-10"
+          className="w-28 md: w-72 mt-4 mb-4 md:mb-10 mx-auto"
         />
-        <div className="flex flex-col gap-3 mt-3 p-4 w-4/5 md:w-2/3 self-center justify-center m-auto rounded-3xl font-thin tracking-wider">
-          <div className="w-full mb-3 h-px bg-gray-200  opacity-50" />
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
-            We're not sure what you're looking for, but it looks like you're a
-            little lost. If you keep on this trail you could end up running into
-            that evil forest spirit that eats wayward souls. It might be best to
-            just{" "}
-            <a
-              className="text-s md:text-lg text-cyan-300 hover:text-cyan-600 "
-              href="#/"
-            >
-              turn around and go home
-            </a>
-            .
-          </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
-            Wait a minute...are you looking for the carpenter's place? Well
-            that's just down the path over here to the left. I hear they're{" "}
-            <a
-              className="text-s md:text-lg text-cyan-300 hover:text-cyan-600 "
-              href="#/projects"
-            >
-              working on some great projects
-            </a>
-            .
-          </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
-            Oh that place over there? You definitely don't want to go there. I
-            hear there's a super weird old guy who{" "}
-            <a
-              className="text-s md:text-lg text-cyan-300 hover:text-cyan-600 "
-              href="#/"
-            >
-              won't stop talking about himself
-            </a>
-            .
-          </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
-            Best of luck on your travels, stranger.
-          </p>
-        </div>
+
+        <div className={STYLES.SECTION_DIVIDER} />
+        <h1 className={STYLES.H_ONE}>
+          Howdy, stranger. Not sure what you's lookin' for...
+        </h1>
+        <p className={STYLES.STANDARD_TEXT}>
+          ...but it looks like you's a mite lost. If you keep on this trail you
+          could end up runnin' into that evil forest spirit that hunts down
+          aimless wanderers. Might be best if you just{" "}
+          <a className={STYLES.IN_WRITING_ANCHOR} href="#/">
+            turn around and head on home
+          </a>
+          .
+        </p>
+        <p className={STYLES.STANDARD_TEXT}>
+          If you's lookin' for the carpenter's place, well that's just down the
+          path over here to the left. I hear they's{" "}
+          <a className={STYLES.IN_WRITING_ANCHOR} href="#/projects">
+            workin' on some great projects
+          </a>
+          . Fine work they do yes indeed.
+        </p>
+        <p className={STYLES.STANDARD_TEXT}>
+          What you got your eye on there? Oh no. No no no. Wait just a gut dag
+          minute. Don't advise going there one bit, nope. Whispers are there's a
+          strange old fellow livin' in them trees who{" "}
+          <a className={STYLES.IN_WRITING_ANCHOR} href="#/">
+            won't stop talking about 'isself
+          </a>
+          . Some reckon e's a warlock. Myself I'm inclined to thinkin' those
+          folk are just as brain-addled as the old man himself. I'd still keep
+          my distance though iffin' I were a smart person such as yousself.
+        </p>
+        <p className={STYLES.STANDARD_TEXT}>
+          Anyway it's high time I hoof it on outta here. It's fixin' to rain.
+          Don't wanna catch a cold.
+        </p>
+        <p className={STYLES.STANDARD_TEXT}>
+          Best of luck on the road, stranger, wherever it may lead.
+        </p>
+        <div className={STYLES.SECTION_DIVIDER} />
       </section>
     </div>
   );

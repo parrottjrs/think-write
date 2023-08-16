@@ -2,23 +2,23 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import jordan from "../images/jordan.jpeg";
 import words from "../images/logo-just-words.png";
+import { STYLES } from "../utils/constants";
 
 export default function About() {
   return (
-    <div className="mb-10">
+    <div className={STYLES.PARENT_DIV}>
       <Navbar />
       <section>
-        <div className="flex flex-col gap-4 p-4 w-4/5 md:w-2/3 self-center m-auto my-5  rounded-3xl">
+        <div className={STYLES.FLEX_GAP_DIV}>
           <img
             src={jordan}
             alt="A photo of Jordan Parrott"
-            className="w-36 md:w-60 m-auto mb-4 md:mb-8 animate-fade rounded-full"
+            className={STYLES.ROUND_IMG}
           />
-          <div className="w-full mb-3 h-px bg-gray-200  opacity-50" />
-          <h1 className="text-xl md:text-3xl text-cyan-300 font-thin tracking-wider">
-            About The Creator
-          </h1>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <div className={STYLES.SECTION_DIVIDER} />
+          <h1 className={STYLES.H_ONE}>About Think-Write</h1>
+          <h2 className={STYLES.H_TWO}>The Creator</h2>
+          <p className={STYLES.STANDARD_TEXT}>
             Hi! My name is Jordan Parrott. I'm currently working for Bell Aliant
             in my hometown while I work on my goal of becoming a software
             developer. I graduated from Memorial of university over 10 years ago
@@ -29,14 +29,14 @@ export default function About() {
             divisions and main thoroughfares stretching from Grande Cache,
             Alberta to Yellowknife in the Northwest Territories.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             Being in construction for so long was a great experience for many
             reasons. The most important thing I discovered is just how badly I
             needed to start working on some personal creative work. Today I'm
             doing that very thing--living in Newfoundland and learning through
             Get Coding NL. You might remember me talking about{" "}
             <a
-              className="text-cyan-300 hover:text-cyan-600 "
+              className={STYLES.IN_WRITING_ANCHOR}
               href="https://github.com/parrottjrs/totes-mcnotes#hi-my-name-is-jordan-and-welcome-to-totes-mcnotes"
             >
               Totes-McNotes, my interactive notes app.
@@ -44,13 +44,11 @@ export default function About() {
             That was my first project. Today I'd like to personally welcome to
             my latest creation:
           </p>
-          <div className="w-full mt-3 h-px bg-gray-200  opacity-50" />
+          <div className={STYLES.SECTION_DIVIDER} />
           <img src={words} className="-ml-3" />
-          <div className="w-full mb-3 h-px bg-gray-200  opacity-50" />
-          <h1 className="text-xl md:text-3xl text-cyan-300 font-thin tracking-wider">
-            A Story About Stories...
-          </h1>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <div className={STYLES.SECTION_DIVIDER} />
+          <h2 className={STYLES.H_TWO}>A Story About Stories...</h2>
+          <p className={STYLES.STANDARD_TEXT}>
             Years ago I decided to tackle a lifelong goal of mine: to form a
             healthy writing habit. My originial idea started budding in 2013,
             but a lot of factors held me back. Mostly my own poor mental health.
@@ -61,7 +59,7 @@ export default function About() {
             ancient power within him. It's cliche I know. Judge all you want,
             but it was loads of fun to write.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             2 months passed as I formed what many might consider a good writing
             habit. I created characters, I created gods and a fictional history.
             I even drew a map! The resulting 92 manuscript pages are something
@@ -69,13 +67,13 @@ export default function About() {
             approximately 23,000 words - Probably 22,000 more than anything else
             I've ever written.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             Here's the thing, though:{" "}
             <span className="italic">at page 92 I gave up</span>. Was I bored?
             Hell no! I was genuinely excited to have made it so far. The problem
             was poor confidence and lack of self-control.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             They say that in order to be a good writer, you have to do one thing
             and one thing only: write. Seems simple, but for me it wasn't so
             simple. I developed an editing problem. Every day I would sit down
@@ -84,10 +82,8 @@ export default function About() {
             ending fountain of self-doubt. Eventually I got frustrated and I
             quit. I let all the characters die on the page.
           </p>
-          <h1 className="text-xl md:text-3xl text-cyan-300 font-thin tracking-wider">
-            The Future of Writing
-          </h1>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <h2 className={STYLES.H_TWO}>The Future of Writing</h2>
+          <p className={STYLES.STANDARD_TEXT}>
             Every single day since then, I have thought about how I gave up and
             what I could have done differently. I've read books on writing,
             listened to podcasts, I've worn my keyboards weary seeking advice
@@ -96,7 +92,7 @@ export default function About() {
             take whatever horrible feelings came along with it. More to the
             point, the only thing holding me back was myself.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             Think-Write is designed to be a self-doubt killer. I want to give
             people all the tools I always needed and never had. The most
             important tool, and by far the most innovative, is the lock
@@ -106,14 +102,14 @@ export default function About() {
             free from self-doubt, or at least free from being able to respond to
             it in a counterproductive manner like I did.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             This, to me, is the future of writing, and I invite you to join me
             on this journey. I invite you to Think-Write.
           </p>
-          <p className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <p className={STYLES.STANDARD_TEXT}>
             Until next time, <br /> - Jordan
           </p>
-          <div className="w-full mb-3 h-px bg-gray-200  opacity-50" />
+          <div className={STYLES.SECTION_DIVIDER} />
         </div>
       </section>
     </div>

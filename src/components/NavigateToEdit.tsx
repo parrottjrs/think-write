@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Pencil } from "lucide-react";
+import { STYLES } from "../utils/constants";
 
 export default function NavigateToEdit({ id }) {
   return (
@@ -8,10 +9,7 @@ export default function NavigateToEdit({ id }) {
       href={`#/edit/${id}`}
       aria-label="Open a new session or edit past sessions"
     >
-      <Pencil
-        className="p-0.5 md:p-0 mr-5 hover:text-yellow-400"
-        strokeWidth={1}
-      />
+      <Pencil className={STYLES.PENCIL} strokeWidth={1} />
     </a>
   );
 }

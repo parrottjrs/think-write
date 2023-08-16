@@ -16,10 +16,10 @@ const Modal = ({ show, onClick }) => {
     return null;
   }
   return (
-    <div className=" absolute -right-7 w-20 py-2 px-1 text-slate-300 fon-thin tracking-wider rounded-xl bg-sky-700/75">
+    <div className=" absolute -right-7 w-20 py-2 px-1 text-slate-300 font-thin tracking-wider rounded-xl bg-sky-700/75">
       <button
-        className="mx-4 my-1"
-        aria-label="start a pomodoro timer for 4 reps. Each rep is 20 minutes with a 5 minute break."
+        className="mx-4 my-1 hover:text-cyan-300"
+        aria-label="Pomodoro timer. 4 reps of 20 minute work periods and 5 minute break periods."
         onClick={() => {
           onClick("20/5", 20);
         }}
@@ -28,8 +28,8 @@ const Modal = ({ show, onClick }) => {
       </button>
       <div className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
       <button
-        className="mx-3 my-1"
-        aria-label="start a pomodoro timer for 4 reps. Each rep is 40 minutes with a 10 minute break."
+        className="mx-3 my-1 hover:text-cyan-300"
+        aria-label="Pomodoro timer. 4 reps of 40 minute work periods and  minute break periods"
         onClick={() => {
           onClick("40/10", 40);
         }}
@@ -121,14 +121,20 @@ export default function Pomodoro() {
       {!enabled ? (
         <div className="relative">
           <button id="timerMenu" onClick={() => showModal(true)}>
-            <Timer className="hover:text-green-300" strokeWidth={1} />
+            <Timer
+              className="text-green-500 hover:text-green-300"
+              strokeWidth={1}
+            />
           </button>
           <Modal show={modal} onClick={startTimer} />
         </div>
       ) : (
         <div className="flex flex-row items-center">
           <button id="stopTimer" onClick={() => stopTimer()}>
-            <TimerOff className="mr-2 hover:text-red-300" strokeWidth={1} />
+            <TimerOff
+              className="mr-2 text-red-500 hover:text-red-300"
+              strokeWidth={1}
+            />
           </button>
           <div>
             {prependZero(state.minutes)}:{prependZero(state.seconds)}

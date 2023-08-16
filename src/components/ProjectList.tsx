@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import NavigateToEdit from "./NavigateToEdit";
-import DeleteButton from "./DeleteButton";
 import { getLocalProjects } from "../utils/utils";
+import { Warning } from "./Warning";
+import { STYLES } from "../utils/constants";
 
 export default function ProjectList() {
   const localProjects = getLocalProjects();
@@ -11,7 +12,7 @@ export default function ProjectList() {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
 
-  const deleteProject = (id) => {
+  const handleDelete = (id) => {
     setProjects((currentProjects) => {
       return currentProjects.filter((project) => project.id !== id);
     });
@@ -21,15 +22,13 @@ export default function ProjectList() {
     const { id, title, modified } = project;
     return (
       <React.Fragment key={id}>
-        <div className="flex items-center text-xs md:text-lg text-white font-thin tracking-wider p-2 md:p-4  border-gray-500 border-b">
+        <div className={STYLES.PROJECT_GRID_DIV}>
           {title ? title : "Untitled Project"}
         </div>
-        <div className="flex items-center text-xs md:text-lg text-white font-thin tracking-wider p-2 md:p-4 border-b border-gray-500 ">
-          {modified}
-        </div>
-        <div className="flex items-center p-2 md:py-4 md:pl-2 border-b text-slate-300 border-gray-500">
+        <div className={STYLES.PROJECT_GRID_DIV}>{modified}</div>
+        <div className={STYLES.PROJECT_GRID_DIV}>
           <NavigateToEdit id={id} />
-          <DeleteButton onClick={() => deleteProject(id)} />
+          <Warning onDelete={() => handleDelete(id)} />
         </div>
       </React.Fragment>
     );

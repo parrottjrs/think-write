@@ -4,13 +4,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { getLocalProjects, formatDate, saveProject } from "../utils/utils";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
+import { STYLES } from "../utils/constants";
 
 export default function LockCalendar() {
   const params = useParams();
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-  console.log(date);
 
   const handleChange = (date) => {
     setDate(date);
@@ -38,36 +38,44 @@ export default function LockCalendar() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="">
-        <Lock className="text-slate-300 mr-3" strokeWidth={1} />
+        <Lock className={STYLES.LOCK} strokeWidth={1} />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-slate-800 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-          <Dialog.Title className="m-0 text-[17px] text-slate-300 font-medium tracking-wider">
+        <Dialog.Content className={STYLES.DIALOG_CONTENT}>
+          <Dialog.Title className={STYLES.DIALOG_TITLE}>
             Ready to lock this session?
           </Dialog.Title>
-          <Dialog.Description className="text-s md:text-lg text-slate-300 font-thin tracking-wider">
+          <Dialog.Description className={STYLES.STANDARD_TEXT}>
             Select a Lock date. We recommend 3 months from now. You may still
             refer to the text, but remember:{" "}
-            <span className="text-red-300 font-normal">
+            <span className={STYLES.RED_TEXT}>
               you will not be able to edit until the lock date has passed.
             </span>{" "}
-            So be sure you're ready to lock it!
+            So be sure you're ready to lock it.
           </Dialog.Description>
-          <div className="flex flex-col items-center">
-            <Calendar
-              className="mt-2 md:mt-4 bg-zinc-900 text-white font-thin"
-              onChange={handleChange}
-              value={date}
-              calendarType="Hebrew"
-            />
+          <Calendar
+            className="mx-auto my-2 md:my-5 bg-zinc-900 text-white font-thin"
+            onChange={handleChange}
+            value={date}
+            calendarType="Hebrew"
+          />
+          <div className="flex justify-evenly">
             <a href="#/projects">
               <input
                 type="submit"
-                className="mt-4 text-slate-300 font-thin tracking-wider hover:text-cyan-300"
+                className={STYLES.AMBER_BUTTON}
                 onClick={handleClick}
+                value="Lock"
               />
             </a>
+            <button
+              id="cancel"
+              className={STYLES.BLUE_BUTTON}
+              onClick={() => setOpen(false)}
+            >
+              Cancel
+            </button>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

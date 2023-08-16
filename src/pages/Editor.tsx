@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar";
 import * as Progress from "@radix-ui/react-progress";
 import Pomodoro from "../components/Pomodoro";
 import LockCalendar from "../components/LockCalendar";
+import { STYLES } from "../utils/constants";
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -86,10 +87,10 @@ export default function Editor() {
   };
 
   return (
-    <div>
+    <div className="mb-10 md:mb-20">
       <Navbar />
       <div className="w-full flex flex-col items-center">
-        <h1 className="self-center text-lg md:text-3xl text-cyan-300 tracking-wider my-3 font-thin">
+        <h1 className="self-center text-xl md:text-3xl text-cyan-300 font-thin tracking-wider my-3 ">
           {data.currentTitle}
         </h1>
         <SessionList
@@ -107,7 +108,7 @@ export default function Editor() {
         <div className="w-4/5 md:w-2/3">
           <ReactQuill
             theme="bubble"
-            className="text-slate-300 tracking-wider"
+            className={STYLES.QUILL_EDITOR}
             placeholder="tell your story..."
             value={text}
             onChange={handleChange}

@@ -4,6 +4,7 @@ import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
 import { formatDate, lockCheck, saveProject } from "../utils/utils";
 import { ArrowDownFromLine, XCircle } from "lucide-react";
+import { STYLES } from "../utils/constants";
 
 const SessionListItem = ({ session, id, hot, sessions, title }) => {
   const { cold, sessionId, unlockDate, lockDate } = session;
@@ -44,13 +45,10 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
         <Collapsible.Trigger asChild>
           <button id={open ? "close" : "open"}>
             {open ? (
-              <XCircle
-                className="p-0.5 text-slate-300  hover:text-slate-600"
-                strokeWidth={1}
-              />
+              <XCircle className={STYLES.X} strokeWidth={1} />
             ) : (
               <ArrowDownFromLine
-                className="p-0.5 text-slate-300 hover:text-slate-600"
+                className={STYLES.ARROW_DOWN}
                 strokeWidth={1}
               />
             )}
@@ -82,13 +80,13 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
           <div className="my-2 border border-slate-600/25" />
           {change ? (
             <div
-              className="my-1 text-slate-300 text-sm md:text-lg font-thin tracking-wider"
+              className="my-1 text-slate-300 text-s md:text-lg font-thin tracking-wider"
               dangerouslySetInnerHTML={{ __html: cold }}
             />
           ) : (
             <ReactQuill
               theme="bubble"
-              className="text-slate-300 tracking-wider"
+              className={STYLES.QUILL_EDITOR}
               value={sessionText}
               onChange={handleChange}
             />
@@ -119,13 +117,10 @@ export default function SessionList({ id, sessions, hot, title }) {
         <Collapsible.Trigger asChild>
           <button id={open ? "close" : "open"}>
             {open ? (
-              <XCircle
-                className="p-0.5 text-slate-300  hover:text-slate-600"
-                strokeWidth={1}
-              />
+              <XCircle className={STYLES.X} strokeWidth={1} />
             ) : (
               <ArrowDownFromLine
-                className="p-0.5 text-slate-300 hover:text-slate-600"
+                className={STYLES.ARROW_DOWN}
                 strokeWidth={1}
               />
             )}
