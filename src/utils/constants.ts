@@ -11,7 +11,7 @@ export const STYLES = {
     "flex items-center text-xs md:text-lg text-white font-thin tracking-wider p-2 md:p-4  border-gray-500 border-b",
   DROPDOWN_NAV_SPACER: "h-px bg-gray-900 my-1 mx-2 opacity-50",
   //TEXT
-  STANDARD_TEXT: "text-s md:text-lg text-slate-300 font-thin tracking-wider",
+  STANDARD_TEXT: "text-sm md:text-lg text-slate-300 font-thin tracking-wider",
   RED_TEXT: "text-red-300",
   H_ONE: "text-xl md:text-3xl text-cyan-300 font-thin tracking-wider",
   H_TWO:
@@ -39,20 +39,20 @@ export const STYLES = {
   TRASH: "p-0.5 md:p-0 text-red-600 hover:text-red-300",
   LOCK: "mr-3 text-amber-500 hover:text-amber-300",
   RED_BUTTON:
-    "mt-4 text-s md:text-lg py-1 px-2  md:py-2 md:px-4 text-white font-thin tracking-wider  bg-red-900 border border-red-600 rounded hover:bg-red-600 hover:border-red-300",
+    "mt-4 w-20 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 text-white font-thin tracking-wider  bg-red-900 border border-red-600 rounded hover:bg-red-600 hover:border-red-300",
   BLUE_BUTTON:
-    "mt-4 text-s md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-blue-900  text-white font-thin tracking-wider border border-blue-600 rounded hover:bg-blue-600 hover:border-blue-300",
+    "w-20 mt-4 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-blue-900  text-white font-thin tracking-wider border border-blue-600 rounded hover:bg-blue-600 hover:border-blue-300",
   GREEN_BUTTON:
-    "self-center text-s md:text-lg bg-green-900  text-white font-thin tracking-wider text-s md:text-lg py-1 px-2  md:py-2 md:px-4 border border-green-600 rounded hover:bg-green-600 hover:border-green-300",
+    "self-center text-sm md:text-lg bg-green-900  text-white font-thin tracking-wider text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 border border-green-600 rounded hover:bg-green-600 hover:border-green-300",
   AMBER_BUTTON:
-    "mt-4 text-s md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-amber-700  text-white font-thin tracking-wider border border-amber-400 rounded hover:bg-amber-600 hover:border-amber-300",
+    "mt-4 w-20  text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-amber-700  text-white font-thin tracking-wider border border-amber-400 rounded hover:bg-amber-600 hover:border-amber-300",
 
   //DIALOG
   DIALOG_CONTENT:
     "z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[600px] translate-x-[-50%] translate-y-[-50%] rounded-md bg-slate-800 p-5 md:p-10 border border-slate-500 focus:outline-none",
   DIALOG_TITLE:
-    "my-1 text-s md:text-lg text-slate-300 font-medium tracking-wider",
+    "my-1 text-sm md:text-lg text-slate-300 font-medium tracking-wider",
   WARNING_DIALOG_TITLE:
     "mb-4 text-md md:text-xl text-red-300 font-medium tracking-wider",
-  TEXT_INPUT: "ml-2 text-s md:text-lg text-slate-300 font-thin tracking-wider",
+  TEXT_INPUT: "ml-2 text-sm md:text-lg text-slate-300 font-thin tracking-wider",
 };
