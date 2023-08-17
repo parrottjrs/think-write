@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
@@ -80,7 +80,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
           <div className="my-2 border border-slate-600/25" />
           {change ? (
             <div
-              className="my-1 text-slate-300 text-s md:text-lg font-thin tracking-wider"
+              className="my-1 text-slate-300 text-sm md:text-lg font-thin tracking-wider"
               dangerouslySetInnerHTML={{ __html: cold }}
             />
           ) : (
@@ -111,7 +111,7 @@ export default function SessionList({ id, sessions, hot, title }) {
       onOpenChange={setOpen}
     >
       <div className=" my-[10px] p-[10px] pl-0 flex justify-start">
-        <p className="mr-2 text-s md:text-lg text-slate-300 font-thin tracking-wider">
+        <p className="mr-2 text-sm md:text-lg text-slate-300 font-thin tracking-wider">
           Past Sessions
         </p>
         <Collapsible.Trigger asChild>

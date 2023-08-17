@@ -50,9 +50,9 @@ export default function About() {
           <h2 className={STYLES.H_TWO}>A Story About Stories...</h2>
           <p className={STYLES.STANDARD_TEXT}>
             Years ago I decided to tackle a lifelong goal of mine: to form a
-            healthy writing habit. My originial idea started budding in 2013,
+            healthy writing habit. My originial idea started budding in 2012,
             but a lot of factors held me back. Mostly my own poor mental health.
-            But in 2018 I finally started my journey into the fictional land of
+            But in 2017 I finally started my journey into the fictional land of
             Cir. "The Dramori Chronicle" was to be a novel of epic proportions:
             a tale of whimsy that followed a blacksmith's son as he fled from
             dark forces that sought to capture him and harvest a dormant,
@@ -79,8 +79,10 @@ export default function About() {
             simple. I developed an editing problem. Every day I would sit down
             and think about what I did the day before and how I could fix it.
             There were always problems, and with those problems came a never
-            ending fountain of self-doubt. Eventually I got frustrated and I
-            quit. I let all the characters die on the page.
+            ending fountain of self-doubt. In fact, those 92 pages that I spoke
+            of weren't even the original story. Before them I had 100 pages that
+            became so derailed I rewrote the entire story. Eventually I got
+            frustrated and quit, letting all the characters die on the page.
           </p>
           <h2 className={STYLES.H_TWO}>The Future of Writing</h2>
           <p className={STYLES.STANDARD_TEXT}>

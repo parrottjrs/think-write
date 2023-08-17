@@ -39,13 +39,13 @@ export const STYLES = {
   TRASH: "p-0.5 md:p-0 text-red-600 hover:text-red-300",
   LOCK: "mr-3 text-amber-500 hover:text-amber-300",
   RED_BUTTON:
-    "mt-4 w-20 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 text-white font-thin tracking-wider  bg-red-900 border border-red-600 rounded hover:bg-red-600 hover:border-red-300",
+    "mt-4 w-24 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 text-white font-thin tracking-wider  bg-red-900 border border-red-600 rounded hover:bg-red-600 hover:border-red-300",
   BLUE_BUTTON:
-    "w-20 mt-4 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-blue-900  text-white font-thin tracking-wider border border-blue-600 rounded hover:bg-blue-600 hover:border-blue-300",
+    "w-24 mt-4 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-blue-900  text-white font-thin tracking-wider border border-blue-600 rounded hover:bg-blue-600 hover:border-blue-300",
   GREEN_BUTTON:
     "self-center text-sm md:text-lg bg-green-900  text-white font-thin tracking-wider text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 border border-green-600 rounded hover:bg-green-600 hover:border-green-300",
   AMBER_BUTTON:
-    "mt-4 w-20  text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-amber-700  text-white font-thin tracking-wider border border-amber-400 rounded hover:bg-amber-600 hover:border-amber-300",
+    "mt-4 w-24  text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 self-right bg-amber-700  text-white font-thin tracking-wider border border-amber-400 rounded hover:bg-amber-600 hover:border-amber-100",
 
   //DIALOG
   DIALOG_CONTENT:

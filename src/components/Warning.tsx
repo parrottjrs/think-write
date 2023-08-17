@@ -18,9 +18,11 @@ export const Warning = ({ onDelete }) => {
             Are you sure?
           </Dialog.Title>
           <Dialog.Description className={STYLES.STANDARD_TEXT}>
-            Think carefully! Once you delete a project, there's no way to
-            retrieve it. Type "delete" in the field below and then click
-            "delete" to confirm your choice. Otherwise, click cancel.
+            Think carefully! Once you delete a project,{" "}
+            <span className={STYLES.RED_TEXT}>
+              there's no way to retrieve it
+            </span>
+            . Click "delete" to confirm your choice. Otherwise, click cancel.
           </Dialog.Description>
           <div className="flex flex-row justify-evenly my-1">
             <button
