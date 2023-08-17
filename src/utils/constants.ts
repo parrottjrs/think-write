@@ -9,7 +9,7 @@ export const STYLES = {
     "py-4 px-2 md:p-4 bg-gray-800/25 text-white font-thin tracking-wider",
   PROJECT_GRID_DIV:
     "flex items-center text-xs md:text-lg text-white font-thin tracking-wider p-2 md:p-4  border-gray-500 border-b",
-
+  DROPDOWN_NAV_SPACER: "h-px bg-gray-900 my-1 mx-2 opacity-50",
   //TEXT
   STANDARD_TEXT: "text-s md:text-lg text-slate-300 font-thin tracking-wider",
   RED_TEXT: "text-red-300",
@@ -26,7 +26,7 @@ export const STYLES = {
   NAV_ANCHOR:
     "block py-2 pl-3 pr-4 text-gray-900 font-thin tracking-wider rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent",
   DROPDOWN_NAV_ANCHOR:
-    "block pt-2 pb-1 pl-3 pr-4 text-gray-900 font-thin tracking-wider md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent",
+    "block pt-2 pb-1 pl-3 pr-4 text-white font-thin tracking-wider  md:p-0  hover:text-blue-500 hover:bg-gray-700  md:dark:hover:bg-transparent",
   DROPDOWN_NAV_SOCIALS: "p-0.5 mr-1 text-white",
 
   //IMGS

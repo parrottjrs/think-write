@@ -39,7 +39,7 @@ export default function NotFound() {
           What you got your eye on there? Oh no. No no no. Wait just a gut dag
           minute. Don't advise going there one bit, nope. Whispers are there's a
           strange old fellow livin' in them trees who{" "}
-          <a className={STYLES.IN_WRITING_ANCHOR} href="#/">
+          <a className={STYLES.IN_WRITING_ANCHOR} href="#/about">
             won't stop talking about 'isself
           </a>
           . Some reckon e's a warlock. Myself I'm inclined to thinkin' those

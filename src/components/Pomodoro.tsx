@@ -16,7 +16,7 @@ const Modal = ({ show, onClick }) => {
     return null;
   }
   return (
-    <div className=" absolute -right-7 w-20 py-2 px-1 text-slate-300 font-thin tracking-wider rounded-xl bg-sky-700/75">
+    <div className=" absolute -right-7 z-20 w-20 py-2 px-1 text-slate-300 font-thin tracking-wider rounded-xl bg-sky-700/75">
       <button
         className="mx-4 my-1 hover:text-cyan-300"
         aria-label="Pomodoro timer. 4 reps of 20 minute work periods and 5 minute break periods."

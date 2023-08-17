@@ -6,7 +6,7 @@ import { STYLES } from "../utils/constants";
 
 const LinkList = () => {
   return (
-    <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+    <ul className="hidden md:flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700 ">
       <li>
         <a href="#/" className={STYLES.NAV_ANCHOR}>
           Home
@@ -46,7 +46,10 @@ const Dropdown = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button aria-label="Dropdown menu for navigation">
-          <Menu className="text-slate-300" strokeWidth={1} />
+          <Menu
+            className="inline-block md:hidden text-slate-300"
+            strokeWidth={1}
+          />
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -57,19 +60,19 @@ const Dropdown = () => {
                 Home
               </a>
             </DropdownMenu.Item>
-            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
             <DropdownMenu.Item>
               <a href="#/projects" className={STYLES.DROPDOWN_NAV_ANCHOR}>
                 Projects
               </a>
             </DropdownMenu.Item>
-            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
             <DropdownMenu.Item>
               <a href="#/about" className={STYLES.DROPDOWN_NAV_ANCHOR}>
                 About
               </a>
             </DropdownMenu.Item>
-            <DropdownMenu.Separator className="h-px bg-gray-900 my-1 mx-2 opacity-50" />
+            <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
             <div className="flex flex-row justify-left pt-1 pb-2 pl-3">
               <DropdownMenu.Item>
                 <a href="https://ca.linkedin.com/in/parrottjrs">
@@ -114,8 +117,8 @@ export default function Navbar() {
           className="z-20 w-full contents md:block md:w-auto px-7"
           id="navbar-solid-bg"
         >
-          {width.current < 767 && <Dropdown />}
-          {width.current > 767 && <LinkList />}
+          <Dropdown />
+          <LinkList />
         </nav>
       </div>
     </header>
