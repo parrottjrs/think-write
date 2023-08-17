@@ -6,6 +6,7 @@ import {
   ACTIONS,
 } from "../reducers/pomodoroReducer";
 import beep from "../sounds/beep.wav";
+import { STYLES } from "../utils/constants";
 
 const playSound = () => {
   new Audio(beep).play();
@@ -121,20 +122,14 @@ export default function Pomodoro() {
       {!enabled ? (
         <div className="relative">
           <button id="timerMenu" onClick={() => showModal(true)}>
-            <Timer
-              className="text-green-500 hover:text-green-300"
-              strokeWidth={1}
-            />
+            <Timer className={STYLES.TIMER_ON} strokeWidth={1} />
           </button>
           <Modal show={modal} onClick={startTimer} />
         </div>
       ) : (
         <div className="flex flex-row items-center">
           <button id="stopTimer" onClick={() => stopTimer()}>
-            <TimerOff
-              className="mr-2 text-red-500 hover:text-red-300"
-              strokeWidth={1}
-            />
+            <TimerOff className={STYLES.TIMER_OFF} strokeWidth={1} />
           </button>
           <div>
             {prependZero(state.minutes)}:{prependZero(state.seconds)}

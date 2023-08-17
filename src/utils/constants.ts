@@ -37,7 +37,10 @@ export const STYLES = {
   ARROW_DOWN: "p-0.5 text-slate-300 hover:text-blue-500",
   X: "p-0.5 text-slate-300  hover:text-red-500",
   TRASH: "p-0.5 md:p-0 text-red-600 hover:text-red-300",
-  LOCK: "mr-3 text-amber-500 hover:text-amber-300",
+  LOCK: "p-0.5 md:p-0 mr-3 text-amber-500 hover:text-amber-300",
+  TIMER_ON: "p-0.5 md: p-0 text-green-500 hover:text-green-300",
+  TIMER_OFF: "p-0.5 md:p-0 mr-2 text-red-500 hover:text-red-300",
+  SETTINGS: "p-0.5 md:p-0 text-slate-300 hover:text-slate-50",
   RED_BUTTON:
     "mt-4 w-24 text-sm md:text-lg py-1 px-2  md:py-2 md:px-4 text-white font-thin tracking-wider  bg-red-900 border border-red-600 rounded hover:bg-red-600 hover:border-red-300",
   BLUE_BUTTON:
@@ -54,5 +57,8 @@ export const STYLES = {
     "my-1 text-sm md:text-lg text-slate-300 font-medium tracking-wider",
   WARNING_DIALOG_TITLE:
     "mb-4 text-md md:text-xl text-red-300 font-medium tracking-wider",
+  CONGRATS_DIALOG_TITLE:
+    "mb-4 text-md md:text-xl text-red-300 font-medium tracking-wider",
+
   TEXT_INPUT: "ml-2 text-sm md:text-lg text-slate-300 font-thin tracking-wider",
 };

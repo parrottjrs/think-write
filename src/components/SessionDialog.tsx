@@ -19,10 +19,7 @@ export default function SessionDialog({ title, onSubmit }) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="">
-        <Settings2
-          className="text-slate-300 hover:text-slate-50"
-          strokeWidth={1}
-        />
+        <Settings2 className={STYLES.SETTINGS} strokeWidth={1} />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />

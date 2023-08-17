@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
@@ -11,6 +10,38 @@ import * as Progress from "@radix-ui/react-progress";
 import Pomodoro from "../components/Pomodoro";
 import LockCalendar from "../components/LockCalendar";
 import { STYLES } from "../utils/constants";
+import * as Dialog from "@radix-ui/react-dialog";
+
+const Congrats = ({ open, setOpen, setProgress, data, setData }) => {
+  return (
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0" />
+        <Dialog.Content className={STYLES.DIALOG_CONTENT}>
+          <Dialog.Title className={STYLES.CONGRATS_DIALOG_TITLE}>
+            Congratulations!
+          </Dialog.Title>
+          <Dialog.Description className={STYLES.STANDARD_TEXT}>
+            Would you look at that? You've completed your goal. Nice work,
+            friend! We suggest locking your session, but no worries if you're
+            not ready.
+          </Dialog.Description>
+          <button
+            id="cancel"
+            className={STYLES.BLUE_BUTTON}
+            onClick={() => {
+              setData({ ...data, goalType: "noGoal" });
+              setProgress(0);
+              setOpen(false);
+            }}
+          >
+            Ok
+          </button>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+};
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -41,6 +72,14 @@ export default function Editor() {
     goalNumber: 0,
   });
   const [progress, setProgress] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const wordCounter = (dirty: string) => {
+    const clean = dirty.replace(/<\/?[^>]+(>|$)/g, "");
+    return clean.split(/\S+/).length - 1;
+    //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
+  };
+  const wordCount = wordCounter(hot);
 
   useEffect(() => {
     saveProject({
@@ -54,7 +93,9 @@ export default function Editor() {
     let interval: number | undefined;
     let timing: number | undefined;
 
-    if (progress < 100) {
+    if (progress === 100) {
+      setOpen(true);
+    } else {
       switch (data.goalType) {
         case "noGoal":
           break;
@@ -67,11 +108,6 @@ export default function Editor() {
           interval = setInterval(() => setProgress(progress + 1), timing);
           break;
         case "words":
-          const wordCounter = (dirty: string) => {
-            const clean = dirty.replace(/<\/?[^>]+(>|$)/g, "");
-            return clean.split(/\S+/).length - 1;
-            //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
-          };
           const percentage = (wordCounter(hot) / data.goalNumber) * 100;
           setProgress(percentage);
           break;
@@ -115,20 +151,38 @@ export default function Editor() {
           />
         </div>
         <div className="w-4/5 h-px mb-4 bg-gray-200 my-1 mx-2 opacity-50" />
-        <div className="w-4/5 flex justify-end contents-center">
-          <Pomodoro />
-          <LockCalendar />
-          <SessionDialog
-            title={title}
-            onSubmit={(data) => {
-              setData(data);
-            }}
-          />
-        </div>
 
+        <div className="w-4/5 flex justify-between items-center">
+          <div className={STYLES.STANDARD_TEXT}>
+            {data.goalType === "words" ? (
+              <p>
+                {wordCount}/{data.goalNumber} words
+              </p>
+            ) : (
+              <p>{wordCount} words</p>
+            )}
+          </div>
+          <div className="flex ">
+            <Pomodoro />
+            <LockCalendar />
+            <SessionDialog
+              title={title}
+              onSubmit={(data) => {
+                setData(data);
+              }}
+            />
+          </div>
+        </div>
         {data.goalType !== "noGoal" && data.goalNumber !== 0 && (
           <ProgressBar progress={progress} />
         )}
+        <Congrats
+          open={open}
+          setOpen={setOpen}
+          setProgress={setProgress}
+          data={data}
+          setData={setData}
+        />
       </div>
     </div>
   );
