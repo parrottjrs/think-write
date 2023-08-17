@@ -16,10 +16,10 @@ export default function NotFound() {
 
         <div className={STYLES.SECTION_DIVIDER} />
         <h1 className={STYLES.H_ONE}>
-          Howdy, stranger. Not sure what you's lookin' for...
+          Howdy, stranger. Not sure what you're lookin' for...
         </h1>
         <p className={STYLES.STANDARD_TEXT}>
-          ...but it looks like you's a mite lost. If you keep on this trail you
+          ...but it looks like you're a mite lost. If you keep on this trail you
           could end up runnin' into that evil forest spirit that hunts down
           aimless wanderers. Might be best if you just{" "}
           <a className={STYLES.IN_WRITING_ANCHOR} href="#/">
@@ -28,8 +28,8 @@ export default function NotFound() {
           .
         </p>
         <p className={STYLES.STANDARD_TEXT}>
-          If you's lookin' for the carpenter's place, well that's just down the
-          path over here to the left. I hear they's{" "}
+          If you're lookin' for the carpenter's place, well that's just down the
+          path over here to the left. I hear they're{" "}
           <a className={STYLES.IN_WRITING_ANCHOR} href="#/projects">
             workin' on some great projects
           </a>
@@ -40,11 +40,11 @@ export default function NotFound() {
           minute. Don't advise going there one bit, nope. Whispers are there's a
           strange old fellow livin' in them trees who{" "}
           <a className={STYLES.IN_WRITING_ANCHOR} href="#/about">
-            won't stop talking about 'isself
+            won't stop talking about hisself
           </a>
-          . Some reckon e's a warlock. Myself I'm inclined to thinkin' those
+          . Some reckon he's a warlock. Myself I'm inclined to thinkin' those
           folk are just as brain-addled as the old man himself. I'd still keep
-          my distance though iffin' I were a smart person such as yousself.
+          my distance though if I were a smart person such as yourself.
         </p>
         <p className={STYLES.STANDARD_TEXT}>
           Anyway it's high time I hoof it on outta here. It's fixin' to rain.
