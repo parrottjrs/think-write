@@ -38,13 +38,13 @@ export default function SessionDialog({ title, onSubmit }) {
               setOpen(false);
             })}
           >
-            <div className="flex flex-row content-center">
+            <div className="flex flex-row items-center">
               <label htmlFor="titleInput" className={STYLES.STANDARD_TEXT}>
                 {"Project Title:"}
               </label>
               {!titleInput ? (
                 <React.Fragment>
-                  <p className="mx-2 text-s md:text-lg text-slate-300 font-thin tracking-wider">
+                  <p className="mx-2 text-sm md:text-lg text-slate-300 font-thin tracking-wider">
                     {title}
                   </p>
                   <button onClick={() => showTitleInput(true)}>
@@ -57,7 +57,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 </React.Fragment>
               ) : (
                 <input
-                  className="ml-2 p-1 bg-zinc-900 text-s md: text-lg text-white font-thin tracking-wider rounded-md"
+                  className="ml-2 p-1 bg-zinc-900 text-sm md: text-lg text-white font-thin tracking-wider rounded-md"
                   id="titleInput"
                   type="text"
                   {...register("currentTitle")}
@@ -67,12 +67,12 @@ export default function SessionDialog({ title, onSubmit }) {
               )}
             </div>
 
-            <div className="mt-4 flex flex-row">
+            <div className="mt-4 flex flex-row items-center">
               <label htmlFor="goal" className={STYLES.STANDARD_TEXT}>
                 {"Today's Goal: "}
               </label>
               <input
-                className="w-12 ml-2 p-1 bg-zinc-900 text-white font-thin tracking-wider rounded-md"
+                className="w-12 ml-2 p-1.5 bg-zinc-900 text-sm md:text-lg text-white font-thin tracking-wider rounded-md"
                 id="goal"
                 type="number"
                 {...register("goalNumber")}
@@ -81,7 +81,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 id="goalType"
                 {...register("goalType")}
                 required={true}
-                className="ml-2 px-1 py-1.5 bg-zinc-900 text-s md:text-lg text-white font-thin tracking-wider rounded-md"
+                className="ml-2 px-1 py-1.5 bg-zinc-900 text-sm md:text-lg text-white font-thin tracking-wider rounded-md"
               >
                 <option value="words">words</option>
                 <option value="minutes">minutes</option>

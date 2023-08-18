@@ -9,9 +9,10 @@ export default function Projects() {
     <div>
       <Navbar />
       <div className="flex flex-col items-center">
-        <div className="grid grid-cols-3  place-content-evenly text-xs md:text-lg w-4/5 md:w-2/3  mb-5 md:mb-10">
+        <div className="grid grid-cols-4  place-content-evenly text-xs md:text-lg w-4/5 md:w-2/3  mb-5 md:mb-10">
           <div className={STYLES.PROJECTS_GRID_HEADER}>Title</div>
           <div className={STYLES.PROJECTS_GRID_HEADER}>Last Edit</div>
+          <div className={STYLES.PROJECTS_GRID_HEADER}>Word Count</div>
           <div className={STYLES.PROJECTS_GRID_HEADER}>Actions</div>
           <ProjectList />
         </div>

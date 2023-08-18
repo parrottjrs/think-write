@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import EditButton from "./EditButton";
 import ReactQuill from "react-quill";
-import { formatDate, lockCheck, saveProject } from "../utils/utils";
+import {
+  formatDate,
+  lockCheck,
+  saveProject,
+  wordCounter,
+} from "../utils/utils";
 import { ArrowDownFromLine, XCircle } from "lucide-react";
 import { STYLES } from "../utils/constants";
 
 const SessionListItem = ({ session, id, hot, sessions, title }) => {
-  const { cold, sessionId, unlockDate, lockDate } = session;
+  const { cold, sessionId, unlockDate, lockDate, wordCount } = session;
 
   const [change, setChange] = useState(true);
   const [sessionText, setSessionText] = useState(cold);
   const [open, setOpen] = useState(false);
+
+  const updatedWordCount = wordCounter(cold);
 
   useEffect(() => {
     const newSessions = [...sessions];
@@ -23,6 +30,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
       title: title,
       id: id,
       hot: hot,
+      wordCount,
       modified: formatDate(new Date()),
       sessions: newSessions,
     });
@@ -64,7 +72,7 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
       </div>
       <Collapsible.Content className="select-none">
         <section className="break-words mt-5 md:mt-8">
-          <div className="flex items-center">
+          <div className="flex items-center justify-between">
             {lockCheck(unlockDate) ? (
               <EditButton
                 onClick={() => {
@@ -76,6 +84,9 @@ const SessionListItem = ({ session, id, hot, sessions, title }) => {
                 Locked on {lockDate}
               </p>
             )}
+            <p className="text-slate-300 text-xs md:text-md font-thin tracking-wider">
+              {updatedWordCount} {updatedWordCount > 1 ? "words" : "word"}
+            </p>
           </div>
           <div className="my-2 border border-slate-600/25" />
           {change ? (

@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Lock } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { getLocalProjects, formatDate, saveProject } from "../utils/utils";
+import {
+  getLocalProjects,
+  formatDate,
+  saveProject,
+  wordCounter,
+} from "../utils/utils";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
 import { STYLES } from "../utils/constants";
@@ -28,6 +33,7 @@ export default function LockCalendar() {
     sessions.push({
       sessionId: sessionNumber,
       cold: lockable.hot,
+      wordCount: wordCounter(lockable.hot),
       lockDate: formatDate(new Date()),
       unlockDate: formatDate(date),
     });

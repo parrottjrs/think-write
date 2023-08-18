@@ -59,9 +59,17 @@ export const saveProject = (currentProject) => {
     existing.title = currentProject.title;
     existing.hot = currentProject.hot;
     existing.modified = currentProject.modified;
+    existing.totalWordCount = currentProject.totalWordCount;
+    existing.previousWordCount = currentProject.previousWordCount;
     existing.sessions = currentProject.sessions;
   } else {
     localProjects.push(currentProject);
   }
   localStorage.setItem("projects", JSON.stringify(localProjects));
+};
+
+export const wordCounter = (dirty: string) => {
+  const clean = dirty.replace(/<\/?[^>]+(>|$)/g, "");
+  return clean.split(/\S+/).length - 1;
+  //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
 };

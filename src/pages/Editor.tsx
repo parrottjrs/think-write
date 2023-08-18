@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
-import { createProject, formatDate, saveProject } from "../utils/utils";
+import {
+  createProject,
+  formatDate,
+  saveProject,
+  wordCounter,
+} from "../utils/utils";
 import SessionList from "../components/SessionList";
 import SessionDialog from "../components/SessionDialog";
 import Navbar from "../components/Navbar";
@@ -74,12 +79,7 @@ export default function Editor() {
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const wordCounter = (dirty: string) => {
-    const clean = dirty.replace(/<\/?[^>]+(>|$)/g, "");
-    return clean.split(/\S+/).length - 1;
-    //reactQuill starts with <p><br></p> which for some reason won't parse, thus foo.length - 1
-  };
-  const wordCount = wordCounter(hot);
+  const currentWordCount = wordCounter(hot);
 
   useEffect(() => {
     saveProject({
@@ -135,8 +135,8 @@ export default function Editor() {
           hot={hot}
           title={title}
         />
-        <div className="w-4/5 flex justify-start">
-          <p className="text-slate-300 font-thin tracking-wider">
+        <div className="w-4/5 flex justify-between">
+          <p className={STYLES.STANDARD_TEXT}>
             Session {sessionId}, {formatDate(new Date())}
           </p>
         </div>
@@ -156,10 +156,12 @@ export default function Editor() {
           <div className={STYLES.STANDARD_TEXT}>
             {data.goalType === "words" ? (
               <p>
-                {wordCount}/{data.goalNumber} words
+                {currentWordCount}/{data.goalNumber} words
               </p>
             ) : (
-              <p>{wordCount} words</p>
+              <p>
+                {currentWordCount} {currentWordCount === 1 ? "word" : "words"}
+              </p>
             )}
           </div>
           <div className="flex ">
