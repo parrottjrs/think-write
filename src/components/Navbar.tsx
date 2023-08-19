@@ -18,25 +18,42 @@ const LinkList = () => {
         </a>
       </li>
       <li>
+        <a href="#/how-to" className={STYLES.NAV_ANCHOR}>
+          How to
+        </a>
+      </li>
+      <li>
         <a href="#/about" className={STYLES.NAV_ANCHOR}>
           About
         </a>
       </li>
-      <li>
-        <a href="https://ca.linkedin.com/in/parrottjrs">
-          <Linkedin className={STYLES.NAV_ANCHOR} strokeWidth={1} />
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/parrottjrs">
-          <Github className={STYLES.NAV_ANCHOR} strokeWidth={1} />
-        </a>
-      </li>
-      <li>
-        <a href="mailto:parrottjrs@gmail.com">
-          <Mail className={STYLES.NAV_ANCHOR} strokeWidth={1} />
-        </a>
-      </li>
+
+      <div className="flex flex-col">
+        <li>
+          <a
+            href="https://ca.linkedin.com/in/parrottjrs"
+            aria-label="Jordan Parrott on LinkedIn"
+          >
+            <Linkedin className={STYLES.NAV_SOCIAL} strokeWidth={1} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/parrottjrs"
+            aria-label="Jordan Parrott on Github"
+          >
+            <Github className={STYLES.NAV_SOCIAL} strokeWidth={1} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:parrottjrs@gmail.com"
+            aria-label="E-mail Jordan Parrott"
+          >
+            <Mail className={STYLES.NAV_SOCIAL} strokeWidth={1} />
+          </a>
+        </li>
+      </div>
     </ul>
   );
 };
@@ -68,6 +85,12 @@ const Dropdown = () => {
             </DropdownMenu.Item>
             <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
             <DropdownMenu.Item>
+              <a href="#/how-to" className={STYLES.DROPDOWN_NAV_ANCHOR}>
+                How to
+              </a>
+            </DropdownMenu.Item>
+            <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
+            <DropdownMenu.Item>
               <a href="#/about" className={STYLES.DROPDOWN_NAV_ANCHOR}>
                 About
               </a>
@@ -75,7 +98,10 @@ const Dropdown = () => {
             <DropdownMenu.Separator className={STYLES.DROPDOWN_NAV_SPACER} />
             <div className="flex flex-row justify-left pt-1 pb-2 pl-3">
               <DropdownMenu.Item>
-                <a href="https://ca.linkedin.com/in/parrottjrs">
+                <a
+                  href="https://ca.linkedin.com/in/parrottjrs"
+                  aria-label="Jordan Parrott on LinkedIn"
+                >
                   <Linkedin
                     className={STYLES.DROPDOWN_NAV_SOCIALS}
                     strokeWidth={1}
@@ -83,7 +109,10 @@ const Dropdown = () => {
                 </a>
               </DropdownMenu.Item>
               <DropdownMenu.Item>
-                <a href="https://github.com/parrottjrs">
+                <a
+                  href="https://github.com/parrottjrs"
+                  aria-label="Jordan Parrott on Github"
+                >
                   <Github
                     className={STYLES.DROPDOWN_NAV_SOCIALS}
                     strokeWidth={1}
@@ -91,7 +120,10 @@ const Dropdown = () => {
                 </a>
               </DropdownMenu.Item>
               <DropdownMenu.Item>
-                <a href="mailto:parrottjrs@gmail.com">
+                <a
+                  href="mailto:parrottjrs@gmail.com"
+                  aria-label="Email Jordan Parrott"
+                >
                   <Mail
                     className={STYLES.DROPDOWN_NAV_SOCIALS}
                     strokeWidth={1}
@@ -108,7 +140,7 @@ const Dropdown = () => {
 
 export default function Navbar() {
   return (
-    <header className="z-10  self-center mb-5 md:mb-10 md:h-20 bg-gray-800/95 sticky top-0 opacity-95 flex flex-row items-center justify-between p-4 border-gray-200 bg-gray-50 dark:bg-gray-800/95 dark:border-gray-700">
+    <header className="z-10 self-center mb-5 h-24 md:mb-10 md:h-30 bg-gray-800/95 sticky top-0 opacity-95 flex flex-row items-center justify-between p-4 border-gray-200 bg-gray-50 dark:bg-gray-800/95 dark:border-gray-700">
       <img src={words} alt="Think-Write" className="h-6 md:h-12 md:px-7" />
       <div className="flex items-center">
         <nav

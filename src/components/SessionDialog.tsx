@@ -57,12 +57,13 @@ export default function SessionDialog({ title, onSubmit }) {
                 </React.Fragment>
               ) : (
                 <input
-                  className="ml-2 p-1 bg-zinc-900 text-sm md: text-lg text-white font-thin tracking-wider rounded-md"
+                  className="w-44 ml-2 p-1 bg-zinc-900 text-sm md: text-lg text-white font-thin tracking-wider rounded-md focus: bg-zinc-900"
                   id="titleInput"
                   type="text"
                   {...register("currentTitle")}
                   defaultValue={title}
                   required={false}
+                  autoComplete="off"
                 />
               )}
             </div>
@@ -72,7 +73,7 @@ export default function SessionDialog({ title, onSubmit }) {
                 {"Today's Goal: "}
               </label>
               <input
-                className="w-12 ml-2 p-1.5 bg-zinc-900 text-sm md:text-lg text-white font-thin tracking-wider rounded-md"
+                className="w-16 ml-2 p-1.5 bg-zinc-900 text-sm md:text-lg text-white font-thin tracking-wider rounded-md"
                 id="goal"
                 type="number"
                 {...register("goalNumber")}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavigateToEdit from "./NavigateToEdit";
-import { getLocalProjects } from "../utils/utils";
+import { getLocalProjects, wordCounter } from "../utils/utils";
 import { Warning } from "./Warning";
 import { STYLES } from "../utils/constants";
 
@@ -19,10 +19,9 @@ export default function ProjectList() {
   };
 
   return projects.map((project) => {
-    const { id, title, modified, sessions } = project;
-    let totalWords = 0;
+    const { id, title, modified, sessions, hot } = project;
+    let totalWords = wordCounter(hot);
     sessions.forEach((session) => (totalWords += session.wordCount));
-    console.log(totalWords);
     return (
       <React.Fragment key={id}>
         <div className={STYLES.PROJECT_GRID_DIV}>

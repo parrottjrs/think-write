@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
@@ -79,7 +79,12 @@ export default function Editor() {
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const currentWordCount = wordCounter(hot);
+  const totalWordCount = wordCounter(hot);
+  const prevWordCount = useRef(wordCounter(hot));
+  const workingWordCount =
+    totalWordCount < prevWordCount.current
+      ? 0
+      : totalWordCount - prevWordCount.current;
 
   useEffect(() => {
     saveProject({
@@ -108,7 +113,10 @@ export default function Editor() {
           interval = setInterval(() => setProgress(progress + 1), timing);
           break;
         case "words":
-          const percentage = (wordCounter(hot) / data.goalNumber) * 100;
+          if (workingWordCount < 0) {
+            return;
+          }
+          const percentage = (workingWordCount / data.goalNumber) * 100;
           setProgress(percentage);
           break;
         default:
@@ -156,11 +164,11 @@ export default function Editor() {
           <div className={STYLES.STANDARD_TEXT}>
             {data.goalType === "words" ? (
               <p>
-                {currentWordCount}/{data.goalNumber} words
+                {workingWordCount}/{data.goalNumber} words
               </p>
             ) : (
               <p>
-                {currentWordCount} {currentWordCount === 1 ? "word" : "words"}
+                {totalWordCount} {totalWordCount === 1 ? "word" : "words"}
               </p>
             )}
           </div>
