@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import jordan from "../images/jordan.jpeg";
 import words from "../images/logo-just-words.png";
 import { STYLES } from "../utils/constants";
+import video from "../images/think-write.mp4";
 
 export default function About() {
   return (
@@ -10,13 +10,14 @@ export default function About() {
       <Navbar />
       <section>
         <div className={STYLES.FLEX_GAP_DIV}>
-          <img
-            src={jordan}
-            alt="A photo of Jordan Parrott"
-            className={STYLES.ROUND_IMG}
-          />
-          <div className={STYLES.SECTION_DIVIDER} />
           <h1 className={STYLES.H_ONE}>About Think-Write</h1>
+          <div className={STYLES.SECTION_DIVIDER} />
+
+          <video controls>
+            <source src={video} type="video/mp4"></source>
+          </video>
+          <div className={STYLES.SECTION_DIVIDER} />
+
           <h2 className={STYLES.H_TWO}>The Creator</h2>
           <p className={STYLES.STANDARD_TEXT}>
             Hi! My name is Jordan Parrott. I'm currently working for Bell Aliant

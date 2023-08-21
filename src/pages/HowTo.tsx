@@ -15,14 +15,12 @@ export default function HowTo() {
             alt="Think-Write"
             className="-ml-1.5 md:-ml-3 w-40 md:w-80"
           />
-
           <p className={STYLES.STANDARD_TEXT}>
             Thinking-Write is easy. Think of something you want to write.
             Anything. That something is now your first project. Now take that
             project and run or continue reading to learn more.
           </p>
           <h2 className={STYLES.H_TWO}>Starting a Project</h2>
-
           <p className={STYLES.STANDARD_TEXT}>
             The first step is to head over to the "projects section" and click
             the big green button labeled "New Project". Congratulations! You've
