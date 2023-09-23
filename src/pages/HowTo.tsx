@@ -86,11 +86,11 @@ export default function HowTo() {
             certainly-- no matter what your sweet, innocent brain is telling
             you-- fantastic piece of writing, click this bad-boy. A dialog will
             pop up. Select a future date. This will determine how long your
-            session will be locked up. Our recommendation is a minimum of 12
-            weeks, but you can pick any date. Or if you just want to clear your
-            editor you can click on today's date to save the session in an
-            unlocked state. Whatever choice you make, heed the warning: Once
-            your session is locked{" "}
+            session will be locked up. A minimum of 12 weeks is recommended, but
+            you can pick any date. Or if you just want to clear your editor you
+            can click on today's date to save the session in an unlocked state.
+            Whatever choice you make, heed the warning: Once your session is
+            locked{" "}
             <span className={STYLES.RED_TEXT}>
               it cannot be accessed until the lock date has passed
             </span>
