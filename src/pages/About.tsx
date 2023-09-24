@@ -21,14 +21,14 @@ export default function About() {
           <h2 className={STYLES.H_TWO}>The Creator</h2>
           <p className={STYLES.STANDARD_TEXT}>
             Hi! My name is Jordan Parrott. I'm currently working for Bell Aliant
-            in my hometown while I work on my goal of becoming a software
-            developer. I graduated from Memorial University of Newfoundland over
-            10 years ago with a BA in Linguistics. After graduatiion, I was left
-            without a sense of direction or purpose. I bounced around a bit
-            before landing on seasonal construction job where I worked for 7
-            years. In that time I helped create roads for dozens of sub
-            divisions and main thoroughfares stretching from Grande Cache,
-            Alberta to Yellowknife in the Northwest Territories.
+            in my hometown while I move toward becoming a software developer. I
+            graduated from Memorial University of Newfoundland over 10 years ago
+            with a BA in Linguistics. After graduatiion, I was left without a
+            sense of direction or purpose. I bounced around a bit before landing
+            on seasonal construction job where I worked for 7 years. In that
+            time I helped create roads for dozens of sub divisions and main
+            thoroughfares stretching from Grande Cache, Alberta to Yellowknife
+            in the Northwest Territories.
           </p>
           <p className={STYLES.STANDARD_TEXT}>
             Being in construction for so long was a great experience for many
