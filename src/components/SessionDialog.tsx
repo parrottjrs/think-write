@@ -9,7 +9,7 @@ export default function SessionDialog({ title, onSubmit }) {
     defaultValues: {
       currentTitle: title,
       goalType: "noGoal",
-      goalNumber: 0,
+      goalNumber: "",
     },
   });
 
